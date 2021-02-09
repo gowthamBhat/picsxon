@@ -11,7 +11,7 @@ window.addEventListener('load', () => {
 function carousel(root) {
     var
         figure = root.querySelector('figure'),
-        nav = root.querySelector('nav'),
+        // nav = root.querySelector('nav'),
         images = figure.children,
         n = images.length,
         gap = root.dataset.gap || 0,
@@ -49,24 +49,30 @@ function carousel(root) {
     }
 
     function setupNavigation() {
-        nav.addEventListener('click', onClick, true);
+        window.addEventListener('load', onClick, true);
 
         function onClick(e) {
-            e.stopPropagation();
+            // e.stopPropagation();
 
-            var t = e.target;
-            if (t.tagName.toUpperCase() != 'BUTTON')
-                return;
+            // var t = e.target;
+            // if (t.tagName.toUpperCase() != 'BUTTON')
+            //     return;
 
-            if (t.classList.contains('next')) {
-                currImage++;
-            }
-            else {
-                currImage--;
-            }
+            currImage++;
+            // if (t.classList.contains('next')) {
+            //     currImage++;
+            // }
+            // else {
+            //     currImage--;
+            // }
 
             rotateCarousel(currImage);
         }
+        setInterval(() => {
+            onClick();
+
+        }, 2500);
+
 
     }
 
