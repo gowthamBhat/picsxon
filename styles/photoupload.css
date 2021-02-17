@@ -1,0 +1,151 @@
+body
+{
+background-color: #c8c9af;
+
+
+}
+
+input,textarea
+{
+    border: 2px solid black;
+
+
+}
+
+
+.title-main
+{
+width: fit-content;
+height: fit-content;
+}
+
+
+
+
+
+
+
+input {
+          width: 250px;
+      }
+
+      input[type="text"]::placeholder {
+
+         color: black;
+          text-align: center;
+      }
+
+      input[type="number"]::placeholder {
+           color: black;
+          text-align: center;
+      }
+
+
+#head
+{
+
+position: relative;
+
+left: 100px;
+top:30px;
+
+
+} 
+
+.error
+{
+  position: relative;
+  top: 100px;
+  left: 390px;
+
+  text-align: center;
+  color: red;
+  font-size: 16px;
+  letter-spacing: 1px;
+  border: 1px solid white;
+  padding: 15px;
+  width: 50%;
+  border-radius: 5px;
+  background-color: black;
+  font-weight: bold;
+}
+
+.note
+{
+  position: relative;
+  top: 100px;
+  left: 390px;
+  text-align: center;
+  color: green;
+  font-size: 16px;
+  letter-spacing: 1px;
+  border: 1px solid white;
+  padding: 15px;
+  width: 50%;
+  border-radius: 5px;
+  background-color: black;
+  font-weight: bold;
+}
+.nav
+{
+
+background-color: #c8c9af;
+margin-top: 10px;
+
+}
+
+.nav-user
+{
+font-weight: bold;
+color: black;
+/* margin-left: 1000px; */
+margin-right: 15px;
+
+}
+.nav-logout
+{
+  color: white;
+  letter-spacing: 1px;
+  font-size: 15px;
+/*  margin: 6px 15px;
+  margin-left: 1200px;
+  */
+  
+}
+
+.slide-nav
+{
+
+margin-left: 85%;
+margin-top: 30px;
+}
+
+
+#dogger
+{
+color: black;
+
+font-family: 'Gloria Hallelujah', cursive;
+font-size: 50px;
+font-weight: 300;
+position: relative;
+top: -15px;
+left: 60px;
+width: fit-content;
+height: fit-content;
+}
+
+.title-main a
+{
+
+text-decoration:none;
+
+}
+#hov:hover
+{
+
+    color: black;
+  text-decoration:underline;
+
+
+}
