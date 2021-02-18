@@ -1,0 +1,82 @@
+body {
+    background-color: black;
+  }
+  
+  img {
+    width: 100px;
+    height: 200px;
+  }
+  
+  .card {
+    float: left;
+    margin: 40px;
+  }
+  #img-conatainer {
+    box-sizing: border-box;
+  }
+  .card-title {
+    text-align: center;
+  }
+  
+  .card:hover {
+    box-shadow: 0px 0px 30px 0px #0ee3df;
+  }
+  .nav {
+    position: relative;
+    left: 62%;
+    top: -20px;
+    width: fit-content;
+  }
+  .nav .btn {
+    margin-left: 10px;
+  }
+  .gow:hover {
+    box-shadow: 0px 0px 20px 0px white;
+  }
+  
+  .gow3:hover {
+    box-shadow: 0px 0px 20px 0px red;
+  }
+  
+  .p-name {
+    width: fit-content;
+  }
+  
+  .title-main {
+    width: fit-content;
+    height: fit-content;
+  }
+  
+  #dogger {
+    color: white;
+  
+    font-family: "Gloria Hallelujah", cursive;
+    font-size: 40px;
+    font-weight: 300;
+    position: relative;
+    top: 30px;
+    left: 60px;
+    width: fit-content;
+  }
+  #anc {
+    text-decoration: none;
+  }
+  
+  #anc:hover {
+    color: white;
+    text-decoration: underline;
+  }
+  .uname {
+    color: white;
+    margin-right: 3px;
+    font-weight: bold;
+    font-size: large;
+    width: fit-content;
+  }
+  .note {
+    color: beige;
+    font-size: 40;
+    margin-top: 50px;
+    font-weight: 600;
+  }
+  
