@@ -12,7 +12,7 @@
 <html>
 
 <head>
-    <title> Pet Market</title>
+    <title> Gallery</title>
     <!-- <style type="text/css">
 		
 		img 
@@ -24,7 +24,7 @@
     <link rel="stylesheet" type="text/css" href="../../styles/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../../styles/gallery.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet"> -->
 </head>
 
 <body>
@@ -37,28 +37,7 @@
 
     </div>
 
-    <div class="nav">
 
-        <?php
-        if (isset($_SESSION['username'])) {
-            $uname =    $_SESSION['username'];
-            echo "<p class='uname'>$uname</p>";
-        }   ?>
-        <a href="login-pass.php"><input type="button" name="addpet" class="gow btn btn-dark" width="50px" value="Add Pet"> </a> &nbsp
-        <?php
-        if (isset($_SESSION['username'])) {
-            $uname = $_SESSION['username'];
-
-            echo " <a href='mypets.php'><input type='button' name='mypets' class='gow3 btn btn-dark'  width='50px' value='My Pets'> </a> ";
-            echo " <a href='myorders.php'><input type='button' name='orders' class='gow3 btn btn-dark'  width='50px' value='My Orders'> </a> ";
-            echo " <a href='log-out.php'><input type='button' name='log-out' class='gow3 btn btn-danger'  width='50px' value='Logout'> </a> ";
-        }
-
-        ?>
-
-
-
-    </div>
 
     <div id="img-conatainer">
 
@@ -68,7 +47,7 @@
 
 
 
-
+        //photo upload time indicator function
         function timeAgo($time_ago)
         {
             $time_ago = strtotime($time_ago);
@@ -143,7 +122,7 @@
 
 
 
-        $q = "SELECT * FROM picsxon";
+        $q = "SELECT * FROM pictures ORDER BY like_count DESC";
 
         $res = mysqli_query($con, $q);
 
@@ -151,25 +130,16 @@
             echo "query error";
         }
 
-        while ($row = mysqli_fetch_array($res)) //for-loop can also be used
-        {
-            $petname = $row['petname'];
-            /*	
-										echo "<div class='main-img'>";
+        while ($row = mysqli_fetch_array($res)) {
 
-
-										echo "<img src='images/" . $row['img']."'/>";
-
-										echo "</div>"; */
 
             echo "<div class='card' style='width: 18rem;'> ";
-            echo "<img class='card-img-top' src='images/" . $row['img'] . "' alt='Card image cap'> "; //bootstrap card-view is used
+            echo "<img class='card-img-top' src='../admin/images/" . $row['path'] . "' alt='Card image cap'> "; //bootstrap card-view is used
             echo " <div class='card-body'> ";
-            echo " <h5 class='card-title'>" . $row['petname'] . "</h5> ";
-            echo " <p class='card-text'>Breed:" . $row['breed'] . "&nbsp &nbsp  Age:" . $row['petage'] . "</p> ";
-            echo "   <a href='adopt.php?petname=$petname' class='btn btn-primary'>Adopt</a> ";
-            echo "Price:" . $row['price'] . "<br>";
-            echo timeAgo($row['stamp']); //calling timeago function 
+            echo " <h5 class='card-title'>" . $row['picture_name'] . "</h5> ";
+            echo " <p class='card-text'>Breed:" . $row['category'] . "&nbsp &nbsp  like:" . $row['like_count'] . "&nbsp  dislike:" . $row['dislike_count'] . "</p> ";
+
+            echo timeAgo($row['timestamp']); //calling timeago function 
 
             echo "  </div> ";
             echo "  </div> ";

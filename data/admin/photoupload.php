@@ -20,6 +20,7 @@ $picture_name = '';
 $f = '';
 $note = '';
 $error = '';
+$category = '';
 
 
 
@@ -31,6 +32,7 @@ if (isset($_POST['submit'])) {
 
 
     $picture_name = $_POST['picture_name'];
+    $category  = $_POST['category'];
 
 
     $f = $_FILES['image'];
@@ -112,7 +114,7 @@ if (isset($_POST['submit'])) {
     if (empty($errors) == true) {
         move_uploaded_file($file_tmp, "images/" . $file_name);
 
-        $q = "INSERT INTO pictures(picture_name,path,type,timestamp) VALUES ('$picture_name','$file_name','$file_type','$stamp')"; //or die ("query error". mysql_error($con)) ;
+        $q = "INSERT INTO pictures(picture_name,category,path,type,timestamp) VALUES ('$picture_name','$category','$file_name','$file_type','$stamp')"; //or die ("query error". mysql_error($con)) ;
 
         $res = mysqli_query($con, $q);
         if (!$res) {
@@ -120,6 +122,7 @@ if (isset($_POST['submit'])) {
         } elseif ($res) {
 
             $picture_name = "";
+            $category = "";
             $note = "<div class='note'> picture added successfully </div>";
         }
     } else {
@@ -139,10 +142,10 @@ if (isset($_POST['submit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Picture</title>
 
-    <link rel="shortcut icon" type="image/x-icon" href="../img/fav2.png" />
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="../img/fav2.png" /> -->
     <link rel="stylesheet" href="../../styles/photoupload.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet"> -->
     <link rel="stylesheet" type="text/css" href="../../styles/bootstrap.min.css">
 </head>
 
@@ -178,9 +181,16 @@ if (isset($_POST['submit'])) {
                     <tr>
 
                         <th>Picture Name</th>
-                        <td> <input type="text" name="picture_name" placeholder="Enter name of Picture" value="<?php echo $picture_name; ?>" autofocus></td>
+                        <td> <input type="text" name="picture_name" placeholder="Enter name of Picture" value="<?php echo $picture_name; ?>" required="" autofocus></td>
 
                     </tr>
+                    <tr>
+
+                        <th>Category</th>
+                        <td> <input type="text" name="category" placeholder="Picture Categrory" value="<?php echo $category; ?>" required="" autofocus></td>
+
+                    </tr>
+
 
 
                     <tr>

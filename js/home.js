@@ -86,3 +86,9 @@ let loginButton = document.getElementById("login");
 loginButton.addEventListener("click", function () {
     window.location.assign("./data/userlogin.html");
 });
+
+let galleryButton = document.getElementById("gallery");
+galleryButton.addEventListener("click", function () {
+    window.location.assign("./data/user/gallery.php");
+});
+
