@@ -52,59 +52,6 @@ if (isset($_POST['submit'])) {
     $expensions = array("jpeg", "jpg", "png");
 
 
-
-
-
-
-
-
-    // if (empty($petname) || empty($petage) || empty($breed) || empty($price) || empty($mobile) || empty($address)) {
-
-
-    //     $error = "<div class='error'> fields are empty </div>";
-    // } elseif ($petage > 50) {
-
-
-    //     $error = 'pet age error';
-    // } elseif (!preg_match('/^[0-9]{10}+$/', $mobile)) {
-    //     $error = 'mobile no not valid';
-    // } elseif (strlen($address) < 10) {
-
-    //     $error = 'small address length';
-    // } else {
-
-
-
-    //     if (in_array($file_ext, $expensions) === false) {
-    //         $errors[] = "extension not allowed, please choose a JPEG or PNG file.";
-    //     }
-    //     if ($file_size > 2097152) {
-    //         $errors[] = 'File size must be excately 2 MB';
-    //     }
-    //     if (empty($errors) == true) {
-    //         move_uploaded_file($file_tmp, "images/" . $file_name);
-
-    //         $q = "INSERT INTO pictures(uname,petname,petage,breed,price,mobile,address,img,type,stamp) VALUES ('$uname','$petname','$petage','$breed','$price','$mobile','$address','$file_name','$file_type','$stamp')"; //or die ("query error". mysql_error($con)) ;
-
-    //         $res = mysqli_query($con, $q);
-    //         if (!$res) {
-    //             $error = "<div class='error'> query failed </div>";
-    //         } elseif ($res) {
-
-    //             $petname = '';
-    //             $petage = '';
-    //             $breed = '';
-    //             $price = '';
-    //             $mobile = '';
-    //             $address = '';
-    //             $note = "<div class='note'> pet added successfully </div>";
-    //         }
-    //     } else {
-    //         print_r($errors);
-    //     }
-
-    //     //echo "success";
-    // }
     if (in_array($file_ext, $expensions) === false) {
         $errors[] = "extension not allowed, please choose a JPEG or PNG file.";
     }
