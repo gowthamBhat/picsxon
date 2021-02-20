@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 17, 2021 at 07:23 PM
+-- Generation Time: Feb 20, 2021 at 06:32 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -31,6 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `pictures` (
   `id` int(10) NOT NULL,
   `picture_name` varchar(255) NOT NULL,
+  `category` varchar(50) NOT NULL,
   `like_count` int(10) DEFAULT 0,
   `dislike_count` int(10) DEFAULT 0,
   `path` varchar(255) NOT NULL,
@@ -42,8 +43,12 @@ CREATE TABLE `pictures` (
 -- Dumping data for table `pictures`
 --
 
-INSERT INTO `pictures` (`id`, `picture_name`, `like_count`, `dislike_count`, `path`, `type`, `timestamp`) VALUES
-(3, 'flower', 0, 0, 'Milk on the deck_ by PascalCampion on DeviantArt.jpg', 'image/jpeg', '2021-02-17 07:19:23pm');
+INSERT INTO `pictures` (`id`, `picture_name`, `category`, `like_count`, `dislike_count`, `path`, `type`, `timestamp`) VALUES
+(3, 'flower', 'nature', 3, 0, 'Milk on the deck_ by PascalCampion on DeviantArt.jpg', 'image/jpeg', '2021-02-17 07:19:23pm'),
+(4, 'dwell ', 'anime', 50, 0, 'wp1969317-how-to-train-your-dragon-wallpapers.jpg', 'image/jpeg', '2021-02-19 03:03:23pm'),
+(6, 'husky', 'dog', 100, 0, 'siberian-husky-woods-shutterstock_558432511.jpg', 'image/jpeg', '2021-02-19 03:04:56pm'),
+(8, 'Linkin Park', 'Music', 150, 0, 'linkin_park_lyrics-wallpaper-1366x768.jpg', 'image/jpeg', '2021-02-19 03:18:15pm'),
+(9, 'valley', 'mountain', 0, 0, 'joshua-earle-EqztQX9btrE-unsplash.jpg', 'image/jpeg', '2021-02-19 03:38:31pm');
 
 --
 -- Indexes for dumped tables
@@ -63,7 +68,7 @@ ALTER TABLE `pictures`
 -- AUTO_INCREMENT for table `pictures`
 --
 ALTER TABLE `pictures`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
