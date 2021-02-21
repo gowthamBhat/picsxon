@@ -13,18 +13,11 @@
 
 <head>
     <title> Gallery</title>
-    <!-- <style type="text/css">
-		
-		img 
-		{
-			height: 300px;
-			width: 300px;
-		} </style> -->
-    <!-- <link rel="shortcut icon" type="image/x-icon" href="../img/fav2.png" /> -->
+
     <link rel="stylesheet" type="text/css" href="../../styles/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../../styles/gallery.css">
 
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet"> -->
+
 </head>
 
 <body>

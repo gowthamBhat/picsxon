@@ -92,7 +92,7 @@ if (isset($_POST['submit'])) {
     <!-- <link rel="shortcut icon" type="image/x-icon" href="../img/fav2.png" /> -->
     <link rel="stylesheet" href="../../styles/photoupload.css">
 
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet"> -->
+
     <link rel="stylesheet" type="text/css" href="../../styles/bootstrap.min.css">
 </head>
 
@@ -111,7 +111,7 @@ if (isset($_POST['submit'])) {
     <div class="title-main">
 
         <a href="http://localhost/picsxon/index.html" id="hov">
-            <p id="dogger">Picsxon</p>
+            <p id="proj_title">Picsxon</p>
         </a>
 
     </div>
