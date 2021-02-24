@@ -47,7 +47,7 @@ body {
     height: fit-content;
   }
   
-  #dogger {
+  #main-title {
     color: white;
   
     font-family: "Gloria Hallelujah", cursive;
@@ -79,4 +79,6 @@ body {
     margin-top: 50px;
     font-weight: 600;
   }
-  
+  .paginationBar{
+    margin-left: 45%;
+  }
