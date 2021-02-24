@@ -30,13 +30,36 @@
 
 
     </div>
-    <div class="col">
-        <div class="row">
+    <div class="row">
+        <div class="col-sm-4 col-list" style="width: fit-content;">
+            <!-- list -->
+            <div class="category-list" style="width: fit-content;">
+                <div class="list-group" style="width: fit-content;">
+                    <?php
+
+                    //connecting to database
+                    $con = mysqli_connect("localhost", "root", "", "picsxon") or die("con Error " . mysqli_error($con));
+
+                    $sqlQuery = 'SELECT category FROM pictures';
+                    $sqlResult = mysqli_query($con, $sqlQuery);
+                    //have to fill the error handling condition
+                    while ($row = mysqli_fetch_array($sqlResult)) {
+
+                        echo '<button type="button" class="list-group-item list-group-item-action ">' . $row['category'] . ' </button>';
+                    }
+
+
+                    ?>
+                </div>
+            </div>
+
+        </div>
+        <div class="col">
+            <!-- picture -->
             <div id="img-conatainer">
 
                 <?php
-                //connecting to database
-                $con = mysqli_connect("localhost", "root", "", "picsxon") or die("con Error " . mysqli_error($con));
+
 
 
 
@@ -159,28 +182,38 @@
 
 
             </div>
-        </div>
-
-        <div class="row">
-            <div class="paginationBar">
-                <nav aria-label="...">
-                    <ul class="pagination pagination-lg">
-                        <?php
-                        // display the links to the pages
-                        for ($page = 1; $page <= $number_of_pages; $page++) {
-                            echo  "<li class='page-item'>";
-                            echo '<a class="page-link" href="gallery.php?page=' . $page . '" tabindex="-1">' . $page . '</a>';
-                            echo " </li>";
-                            // echo '<a class="" href="gallery.php?page=' . $page . '">' . $page . '</a> ';
-                        }
-
-                        ?>
-                    </ul>
-                </nav>
-            </div>
 
         </div>
     </div>
+    <div class="row">
+
+        <!-- pagination -->
+
+        <div class="paginationBar">
+            <nav aria-label="...">
+                <ul class="pagination pagination-lg">
+                    <?php
+                    // display the links to the pages
+                    for ($page = 1; $page <= $number_of_pages; $page++) {
+                        echo  "<li class='page-item'>";
+                        echo '<a class="page-link" href="gallery.php?page=' . $page . '" tabindex="-1">' . $page . '</a>';
+                        echo " </li>";
+                        // echo '<a class="" href="gallery.php?page=' . $page . '">' . $page . '</a> ';
+                    }
+
+                    ?>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
 
 
 
