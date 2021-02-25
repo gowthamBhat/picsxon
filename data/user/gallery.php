@@ -30,10 +30,11 @@
 
 
     </div>
+
     <div class="row">
-        <div class="col-sm-4 col-list" style="width: fit-content;">
+        <div class="col-2 category-list">
             <!-- list -->
-            <div class="category-list" style="width: fit-content;">
+            <div class="" style="width: fit-content;">
                 <div class="list-group" style="width: fit-content;">
                     <?php
 
@@ -52,7 +53,6 @@
                     ?>
                 </div>
             </div>
-
         </div>
         <div class="col">
             <!-- picture -->
@@ -131,7 +131,7 @@
                 }
 
                 //Results that allowed per page
-                $results_per_page = 8;
+                $results_per_page = 6;
 
                 //Retreving all the data
                 $q = "SELECT * FROM pictures";
@@ -182,11 +182,9 @@
 
 
             </div>
-
         </div>
     </div>
-    <div class="row">
-
+    <div class="row-2">
         <!-- pagination -->
 
         <div class="paginationBar">
@@ -206,15 +204,6 @@
             </nav>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
 
 
 

@@ -82,6 +82,9 @@ body {
   .paginationBar{
     margin-left: 45%;
   }
-  .col-list{
-    flex: none;
-  }
+ .category-list{
+
+  position: relative;
+  top:50px;
+  left: 50px;
+ }
