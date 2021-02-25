@@ -138,7 +138,7 @@
                 }
 
                 //Results allowed per page
-                $results_per_page = 8;
+                $results_per_page = 6;
 
 
                 //Handling Category Query-Param
@@ -160,6 +160,8 @@
                 }
                 //This will return the number of results in the table
                 $number_of_results = mysqli_num_rows($res);
+                echo  $number_of_results;
+                echo " ";
 
                 // determine number of total pages available
                 $number_of_pages = ceil($number_of_results / $results_per_page);
@@ -175,11 +177,15 @@
                 $this_page_first_result = ($page - 1) * $results_per_page;
 
                 if (!isset($_GET['category'])) {
+                    echo $this_page_first_result;
+                    echo " ";
+                    echo $results_per_page;
+
                     $sql = ' SELECT * FROM pictures ORDER BY like_count DESC LIMIT ' . $this_page_first_result . ',' .  $results_per_page;
                 } else {
                     $getCategory = $_GET['category'];
 
-                    $sql = "SELECT * FROM pictures WHERE category='$getCategory' ORDER BY like_count DESC";
+                    $sql = "SELECT * FROM pictures WHERE category='$getCategory' ORDER BY like_count DESC LIMIT " . $this_page_first_result . "," . $results_per_page;
                 }
 
 
@@ -218,11 +224,23 @@
                 <ul class="pagination pagination-lg">
                     <?php
                     // display the links to the pages
-                    for ($page = 1; $page <= $number_of_pages; $page++) {
+                    if (!isset($_GET['category'])) {
 
-                        echo  "<li class='page-item'>";
-                        echo '<a class="page-link" href="gallery.php?page=' . $page . '" tabindex="-1">' . $page . '</a>';
-                        echo " </li>";
+                        for ($page = 1; $page <= $number_of_pages; $page++) {
+
+                            echo  "<li class='page-item'>";
+                            echo '<a class="page-link" href="gallery.php?page=' . $page . '" tabindex="-1">' . $page . '</a>';
+                            echo " </li>";
+                        }
+                    } else {
+                        $getCategory = $_GET['category'];
+                        for ($page = 1; $page <= $number_of_pages; $page++) {
+                            echo  "<li class='page-item'>";
+
+                            echo '<a class="page-link" href="gallery.php?page=' . $page . '&category=' . $getCategory . ' " " tabindex="-1">' . $page . '</a>';
+
+                            echo " </li>";
+                        }
                     }
 
                     ?>
