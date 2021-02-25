@@ -16,6 +16,11 @@
 
     <link rel="stylesheet" type="text/css" href="../../styles/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../../styles/gallery.css">
+    <style>
+        a {
+            text-decoration: none !important;
+        }
+    </style>
 
 
 </head>
@@ -41,12 +46,17 @@
                     //connecting to database
                     $con = mysqli_connect("localhost", "root", "", "picsxon") or die("con Error " . mysqli_error($con));
 
-                    $sqlQuery = 'SELECT category FROM pictures';
+                    //List query
+                    $sqlQuery = 'SELECT DISTINCT category FROM pictures';
                     $sqlResult = mysqli_query($con, $sqlQuery);
+
                     //have to fill the error handling condition
+
+
+                    echo '<a  href="gallery.php"><button type="button" class="list-group-item list-group-item-action ">All</button></a> ';
                     while ($row = mysqli_fetch_array($sqlResult)) {
 
-                        echo '<button type="button" class="list-group-item list-group-item-action ">' . $row['category'] . ' </button>';
+                        echo '<a href="gallery.php?category=' . $row['category'] . ' " > <button type="button" class="list-group-item list-group-item-action ">' . $row['category'] . ' </button></a> ';
                     }
 
 
@@ -59,9 +69,6 @@
             <div id="img-conatainer">
 
                 <?php
-
-
-
 
                 //photo upload time indicator function
                 function timeAgo($time_ago)
@@ -130,16 +137,26 @@
                     }
                 }
 
-                //Results that allowed per page
-                $results_per_page = 6;
+                //Results allowed per page
+                $results_per_page = 8;
 
-                //Retreving all the data
-                $q = "SELECT * FROM pictures";
+
+                //Handling Category Query-Param
+                if (!isset($_GET['category'])) {
+                    $q = "SELECT * FROM pictures";
+                } else {
+                    $getCategory = $_GET['category'];
+                    // echo  "SELECT * FROM sold WHERE uname='$uname'";
+                    $q = "SELECT * FROM pictures WHERE category='$getCategory'";
+                }
+
+
 
                 $res = mysqli_query($con, $q);
 
                 if (!$res) {
                     echo "query error";
+                    return;
                 }
                 //This will return the number of results in the table
                 $number_of_results = mysqli_num_rows($res);
@@ -157,7 +174,16 @@
                 // determine the sql LIMIT starting number for the results on the displaying page
                 $this_page_first_result = ($page - 1) * $results_per_page;
 
-                $sql = ' SELECT * FROM pictures ORDER BY like_count DESC LIMIT ' . $this_page_first_result . ',' .  $results_per_page;
+                if (!isset($_GET['category'])) {
+                    $sql = ' SELECT * FROM pictures ORDER BY like_count DESC LIMIT ' . $this_page_first_result . ',' .  $results_per_page;
+                } else {
+                    $getCategory = $_GET['category'];
+
+                    $sql = "SELECT * FROM pictures WHERE category='$getCategory' ORDER BY like_count DESC";
+                }
+
+
+
                 $result = mysqli_query($con, $sql);
 
                 while ($row = mysqli_fetch_array($result)) {
@@ -193,10 +219,10 @@
                     <?php
                     // display the links to the pages
                     for ($page = 1; $page <= $number_of_pages; $page++) {
+
                         echo  "<li class='page-item'>";
                         echo '<a class="page-link" href="gallery.php?page=' . $page . '" tabindex="-1">' . $page . '</a>';
                         echo " </li>";
-                        // echo '<a class="" href="gallery.php?page=' . $page . '">' . $page . '</a> ';
                     }
 
                     ?>
