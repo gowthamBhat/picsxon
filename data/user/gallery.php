@@ -181,11 +181,11 @@
                     echo " ";
                     echo $results_per_page;
 
-                    $sql = ' SELECT * FROM pictures ORDER BY like_count DESC LIMIT ' . $this_page_first_result . ',' .  $results_per_page;
+                    $sql = ' SELECT * FROM pictures ORDER BY like_count DESC,id ASC LIMIT ' . $this_page_first_result . ',' .  $results_per_page;
                 } else {
                     $getCategory = $_GET['category'];
 
-                    $sql = "SELECT * FROM pictures WHERE category='$getCategory' ORDER BY like_count DESC LIMIT " . $this_page_first_result . "," . $results_per_page;
+                    $sql = "SELECT * FROM pictures WHERE category='$getCategory' ORDER BY like_count DESC,id ASC LIMIT " . $this_page_first_result . "," . $results_per_page;
                 }
 
 
