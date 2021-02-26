@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2021 at 06:32 PM
+-- Generation Time: Feb 26, 2021 at 06:08 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -48,7 +48,10 @@ INSERT INTO `pictures` (`id`, `picture_name`, `category`, `like_count`, `dislike
 (4, 'dwell ', 'anime', 50, 0, 'wp1969317-how-to-train-your-dragon-wallpapers.jpg', 'image/jpeg', '2021-02-19 03:03:23pm'),
 (6, 'husky', 'dog', 100, 0, 'siberian-husky-woods-shutterstock_558432511.jpg', 'image/jpeg', '2021-02-19 03:04:56pm'),
 (8, 'Linkin Park', 'Music', 150, 0, 'linkin_park_lyrics-wallpaper-1366x768.jpg', 'image/jpeg', '2021-02-19 03:18:15pm'),
-(9, 'valley', 'mountain', 0, 0, 'joshua-earle-EqztQX9btrE-unsplash.jpg', 'image/jpeg', '2021-02-19 03:38:31pm');
+(11, 'wrog', 'upset', 0, 0, 'Benji Davies (@Benji_Davies).jpg', 'image/jpeg', '2021-02-24 09:16:12am'),
+(12, 'home', 'peace', 0, 0, 'This makes me feel things_.jpg', 'image/jpeg', '2021-02-24 09:17:04am'),
+(14, 'lazy', 'dog', 0, 0, 'wp1969426-how-to-train-your-dragon-wallpapers.jpg', 'image/jpeg', '2021-02-25 01:19:34pm'),
+(15, 'oscar', 'dog', 0, 0, 'HB4AT3D3IMI6TMPTWIZ74WAR54.jpg', 'image/jpeg', '2021-02-25 05:59:39pm');
 
 --
 -- Indexes for dumped tables
@@ -68,7 +71,7 @@ ALTER TABLE `pictures`
 -- AUTO_INCREMENT for table `pictures`
 --
 ALTER TABLE `pictures`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
