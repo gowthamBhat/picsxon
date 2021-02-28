@@ -22,6 +22,8 @@
         }
     </style>
 
+    <script async defer src="/js/gallery.js"></script>
+
 
 </head>
 
@@ -200,7 +202,7 @@
                     echo " <div class='card-body'> ";
                     echo " <h5 class='card-title'>" . $row['picture_name'] . "</h5> ";
                     echo " <p class='card-text'>Category:" . $row['category'] . "&nbsp  like:" . $row['like_count'] . "&nbsp  dislike:" . $row['dislike_count'] . "</p> ";
-
+                    echo "<i class='far fa-heart'></i>";
                     echo timeAgo($row['timestamp']); //calling timeago function 
 
                     echo "  </div> ";
