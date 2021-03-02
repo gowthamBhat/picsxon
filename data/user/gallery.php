@@ -16,6 +16,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../styles/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../../styles/gallery.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
     <style>
         a {
             text-decoration: none !important;
@@ -51,7 +52,10 @@
                     //List query
                     $sqlQuery = 'SELECT DISTINCT category FROM pictures';
                     $sqlResult = mysqli_query($con, $sqlQuery);
-
+                    if (!$sqlResult) {
+                        echo "query failed";
+                        return;
+                    }
                     //have to fill the error handling condition
 
 
@@ -162,8 +166,8 @@
                 }
                 //This will return the number of results in the table
                 $number_of_results = mysqli_num_rows($res);
-                echo  $number_of_results;
-                echo " ";
+
+
 
                 // determine number of total pages available
                 $number_of_pages = ceil($number_of_results / $results_per_page);
@@ -179,9 +183,6 @@
                 $this_page_first_result = ($page - 1) * $results_per_page;
 
                 if (!isset($_GET['category'])) {
-                    echo $this_page_first_result;
-                    echo " ";
-                    echo $results_per_page;
 
                     $sql = ' SELECT * FROM pictures ORDER BY like_count DESC,id ASC LIMIT ' . $this_page_first_result . ',' .  $results_per_page;
                 } else {
@@ -202,7 +203,10 @@
                     echo " <div class='card-body'> ";
                     echo " <h5 class='card-title'>" . $row['picture_name'] . "</h5> ";
                     echo " <p class='card-text'>Category:" . $row['category'] . "&nbsp  like:" . $row['like_count'] . "&nbsp  dislike:" . $row['dislike_count'] . "</p> ";
-                    echo "<i class='far fa-heart'></i>";
+                    echo "<i class='far fa-heart fa-2x'></i>";
+                    echo "&nbsp &nbsp &nbsp &nbsp";
+                    echo " <i class='fas fa-heart-broken fa-2x'></i>";
+                    echo "&nbsp &nbsp &nbsp &nbsp";
                     echo timeAgo($row['timestamp']); //calling timeago function 
 
                     echo "  </div> ";
