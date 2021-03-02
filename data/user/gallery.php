@@ -56,7 +56,7 @@
                         echo "query failed";
                         return;
                     }
-                    //have to fill the error handling condition
+
 
 
                     echo '<a  href="gallery.php"><button type="button" class="list-group-item list-group-item-action ">All</button></a> ';
@@ -194,6 +194,10 @@
 
 
                 $result = mysqli_query($con, $sql);
+                if (!$result) {
+                    echo "query failed";
+                    return;
+                }
 
                 while ($row = mysqli_fetch_array($result)) {
 
