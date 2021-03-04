@@ -6,6 +6,8 @@ try {
 } catch (MySQli_Sql_Exception $ex) {
     echo "connection Error:" . $ex;
 }
+
+
 // session_start();
 
 // if (!isset($_SESSION['username'])) {
