@@ -23,6 +23,36 @@
         a {
             text-decoration: none !important;
         }
+
+        /* .column {
+            float: left;
+            display: block;
+            width: 30%;
+            margin: 10px 10px;
+            padding: 0 8px;
+        }
+
+       
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+       
+        .container {
+            padding: 0 16px;
+        }
+
+    
+        .container::after,
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .title {
+            color: grey;
+        } */
     </style>
 
     <script async defer src="/js/gallery.js"></script>
@@ -202,6 +232,23 @@
                 }
 
                 while ($row = mysqli_fetch_array($result)) {
+
+
+                    // echo "<div class='row'>";
+                    // echo "<div class='column'>";
+                    // echo " <div class='card'>";
+                    // echo "  <img src='../admin/images/" . $row['path'] . "' alt='Card image cap' style='width:100%'>";
+
+                    // echo "<div class='container'>";
+                    // echo " <h5 class='card-title'>" . $row['picture_name'] . "</h5> ";
+                    // echo    "<p class='title'>Category:</p>" . $row['category'];
+                    // echo  "&nbsp  like:" . $row['like_count'] . "&nbsp  dislike:" . $row['dislike_count'] . "</p>";
+                    // echo "<i class='far fa-heart fa-2x'></i>&nbsp &nbsp &nbsp &nbsp <i class='fas fa-heart-broken fa-2x'></i>";
+                    // echo "&nbsp &nbsp &nbsp &nbsp";
+                    // echo timeAgo($row['timestamp']);
+                    // echo "</div>";
+                    // echo "</div>";
+                    // echo "  </div>";
 
 
                     echo "<div class='card' style='width: 18rem;'> ";

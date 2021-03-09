@@ -2,21 +2,21 @@ body {
     background-color: black;
   }
   
-  img {
+   img {
     width: 100px;
     height: 200px;
-  }
+  } 
   
   .card {
     float: left;
     margin: 40px;
-  }
-  #img-conatainer {
+  } 
+   #img-conatainer {
     box-sizing: border-box;
-  }
-  .card-title {
+  } 
+   .card-title {
     text-align: center;
-  }
+  } 
   
   .card:hover {
     box-shadow: 0px 0px 30px 0px #0ee3df;
