@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 26, 2021 at 06:08 AM
+-- Generation Time: Mar 09, 2021 at 05:02 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -53,6 +53,31 @@ INSERT INTO `pictures` (`id`, `picture_name`, `category`, `like_count`, `dislike
 (14, 'lazy', 'dog', 0, 0, 'wp1969426-how-to-train-your-dragon-wallpapers.jpg', 'image/jpeg', '2021-02-25 01:19:34pm'),
 (15, 'oscar', 'dog', 0, 0, 'HB4AT3D3IMI6TMPTWIZ74WAR54.jpg', 'image/jpeg', '2021-02-25 05:59:39pm');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `email`) VALUES
+(1, 'suhutha', '81dc9bdb52d04dc20036dbd8313ed055', 'gsuhruthasuhu@gmail.com'),
+(2, 'suhu', 'd2ca24a62a3cf6f2e236bcfe4fa3c3b1', 'suhu@gmail.com'),
+(3, 'pes', 'a7329a9971b2ea188477533dfbf1963b', 'pes.edu'),
+(4, 'edna', 'f5fa02bc60f633f3b1781a824f5211b5', 'edna@gmail.com'),
+(5, 'gowtham', '81dc9bdb52d04dc20036dbd8313ed055', 'gowtham@gmail.com'),
+(6, 'gowth', '9d032048748881a7ebde85e090627262', 'gowthambhat793@gmail.com');
+
 --
 -- Indexes for dumped tables
 --
@@ -64,6 +89,12 @@ ALTER TABLE `pictures`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -72,6 +103,12 @@ ALTER TABLE `pictures`
 --
 ALTER TABLE `pictures`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
