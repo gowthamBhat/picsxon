@@ -17,7 +17,11 @@
 </head>
 
 <body>
-
+    <nav>
+        <div class="nav-container">
+            <a href="photoupload.php"><button class="nav btn btn-dark testing">Upload Photo</button></a>
+        </div>
+    </nav>
     <center>
         <div id="image-container">
             <figure>
@@ -32,7 +36,7 @@
 
     <div class="list-container">
         <div class="user-list">
-            <table class='table table-dark'>
+            <table class='table-data'>
 
                 <?php
 

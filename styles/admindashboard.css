@@ -51,6 +51,29 @@ background: linear-gradient(90deg, rgba(10,7,52,1) 0%, rgba(127,38,38,1) 57%, rg
     color:white;
    position: relative;
    left: 350px;
-    
+}
+.nav-container{
+    margin-top: 10px;
+    margin-left: 70%;
+}
+.nav-container button{
+    padding: 2px 2px;
+}
+.table-data th{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color:#3e4541;
+    color: white;
 
+}
+.table-data td{
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+.table-data{
+background-color: black;
+color: white;
+width: 100%;
+padding: 5px 5px;
 }
