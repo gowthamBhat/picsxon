@@ -1,3 +1,8 @@
+body{
+    background: rgb(10,7,52);
+    background: linear-gradient(90deg, rgba(10,7,52,1) 0%, rgba(127,38,38,1) 65%, rgba(11,43,49,1) 100%);
+}
+
 #admin{
     border-radius: 50%;
     margin-top: 20px;
@@ -32,9 +37,20 @@
 }
 .user-list{
     width: 400px;
-    height: 250px;
- 
+    height: 400px;
+    margin-left: 550px;
+    
 }
 .list-container{
-    margin-bottom: 70px;
+    background: rgb(10,7,52);
+background: linear-gradient(90deg, rgba(10,7,52,1) 0%, rgba(127,38,38,1) 57%, rgba(11,43,49,1) 100%);
+}
+.user-count{
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color:white;
+   position: relative;
+   left: 350px;
+    
+
 }

@@ -1,15 +1,3 @@
-<?php
-
-$con  = mysqli_connect('localhost', 'root', '', 'picsxon');
-
-$query = "SELECT * FROM users";
-$queryResult = mysqli_query($con, $query);
-
-
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +21,7 @@ $queryResult = mysqli_query($con, $query);
     <center>
         <div id="image-container">
             <figure>
-                <img id="admin" src="../../images/admin.jpeg" alt="admin img" width="330" height="330">
+                <img id="admin" src="../../images/admin.png" alt="admin img" width="330" height="330">
                 <i class="fas fa-camera-retro fa-2x" id="cam-icon" title="upload new image"></i>
 
                 <figcaption>Admin</figcaption>
@@ -42,10 +30,45 @@ $queryResult = mysqli_query($con, $query);
     </center>
 
 
+    <div class="list-container">
+        <div class="user-list">
+            <table class='table table-dark'>
 
-    <div class="user-list">
+                <?php
 
+                $con  = mysqli_connect('localhost', 'root', '', 'picsxon');
+
+                $search_query = "SELECT * FROM users";
+                $res = mysqli_query($con,  $search_query);
+
+
+
+                echo "<div class='user-count'>Available Users - <button class='btn btn-dark'> " . mysqli_num_rows($res) . " </button></div>";
+
+                echo "
+							<div style='clear:both;'></div>
+							<thead>
+					<tr>
+						<th>Name</th>
+						<th>Email</th>
+
+					</tr>
+				</thead>";
+
+                while ($row = mysqli_fetch_array($res)) {
+                    echo "<tr>";
+                    echo "<td>" . $row['username'] . "</td>";
+                    echo "<td>" . $row['email'] . "</td>";
+                    echo "</tr>";
+                }
+
+
+                ?>
+            </table>
+
+        </div>
     </div>
+
 
 
 </body>
