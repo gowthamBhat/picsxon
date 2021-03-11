@@ -13,15 +13,29 @@
         a:link {
             text-decoration: none !important;
         }
+
+        .list-hide {
+            display: block;
+        }
     </style>
     <title>Document</title>
 </head>
 
 <body>
     <nav>
-        <div class="nav-container">
+        <div class="nav-container-upload">
+
+
             <a href="photoupload.php"><button class="nav btn btn-dark testing">Upload Photo</button></a>
+
         </div>
+        <div class="nav-container-2-user">
+            <button id="user-list-view" class=" btn btn-dark">view users</button>
+        </div>
+
+
+
+
     </nav>
     <center>
         <div id="image-container">
@@ -35,8 +49,9 @@
     </center>
 
 
-    <div class="list-container">
+    <div class="list-container" id="list-container">
         <div class="user-list">
+
             <table class='table-data'>
 
                 <?php
@@ -63,7 +78,7 @@
                 while ($row = mysqli_fetch_array($res)) {
                     echo "<tr>";
                     echo "<td>" . $row['username'] . "</td>";
-                    echo "<td>" . $row['email'] . "</td>";
+                    echo "<td> &nbsp&nbsp&nbsp" . $row['email'] . "</td>";
                     echo "</tr>";
                 }
 

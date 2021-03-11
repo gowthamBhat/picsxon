@@ -44,6 +44,7 @@ body{
 .list-container{
     background: rgb(10,7,52);
 background: linear-gradient(90deg, rgba(10,7,52,1) 0%, rgba(127,38,38,1) 57%, rgba(11,43,49,1) 100%);
+display: none;
 }
 .user-count{
     font-weight: bold;
@@ -52,13 +53,21 @@ background: linear-gradient(90deg, rgba(10,7,52,1) 0%, rgba(127,38,38,1) 57%, rg
    position: relative;
    left: 350px;
 }
-.nav-container{
-    margin-top: 10px;
-    margin-left: 70%;
+.nav-container-upload{
+
+position: relative;
+top: 26px;
+left: 67%;
 }
-.nav-container button{
-    padding: 2px 2px;
-}
+.nav-container-2-user{
+
+    position: relative;
+    top: -12px;
+    left: 75%;
+    }
+/* .nav-container button{
+    padding: 4px 4px;
+} */
 .table-data th{
     padding-top: 12px;
     padding-bottom: 12px;
@@ -72,7 +81,8 @@ background: linear-gradient(90deg, rgba(10,7,52,1) 0%, rgba(127,38,38,1) 57%, rg
     padding: 10px;
 }
 .table-data{
-background-color: black;
+    background: rgb(10,7,52);
+    background: linear-gradient(90deg, rgba(10,7,52,1) 0%, rgba(127,38,38,1) 57%, rgba(11,43,49,1) 100%);
 color: white;
 width: 100%;
 padding: 5px 5px;
