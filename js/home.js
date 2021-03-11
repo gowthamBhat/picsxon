@@ -91,4 +91,9 @@ let galleryButton = document.getElementById("gallery");
 galleryButton.addEventListener("click", function () {
     window.location.assign("./data/user/gallery.php");
 });
+let adminButton = document.getElementById("admin");
+adminButton.addEventListener("click", function () {
+    window.location.assign("./data/admin/admindashboard.php");
+});
+
 
