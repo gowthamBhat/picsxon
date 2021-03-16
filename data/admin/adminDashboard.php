@@ -56,7 +56,7 @@
 
                 <?php
 
-                $con  = mysqli_connect('localhost', 'root', '', 'picsxon');
+                include '../../database/DBconnection.php';
 
                 $search_query = "SELECT * FROM users";
                 $res = mysqli_query($con,  $search_query);
@@ -71,6 +71,7 @@
 					<tr>
 						<th>Name</th>
 						<th>Email</th>
+                        <th></th>
 
 					</tr>
 				</thead>";
@@ -79,6 +80,7 @@
                     echo "<tr>";
                     echo "<td>" . $row['username'] . "</td>";
                     echo "<td> &nbsp&nbsp&nbsp" . $row['email'] . "</td>";
+                    echo "<td> <button class='btn btn-danger btn-sm' onclick=caller(" . $row['id'] . ")>X</button></td>";
                     echo "</tr>";
                 }
 
@@ -89,7 +91,16 @@
         </div>
     </div>
 
+    <script>
+        function caller(id) {
 
+            fetch(`respon.php?id=${id}`)
+                .then(response => response.json())
+                .then(data => {
+                    location.reload();
+                });
+        }
+    </script>
 
 </body>
 
