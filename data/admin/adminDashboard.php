@@ -92,6 +92,18 @@
     </div>
 
     <script>
+        //! need to refactor this whole code
+        //! have to make fetch of whole data through here
+        function fetchDashboardData() {
+            //fetch call
+            //loop through data
+
+        }
+
+        function fetchDataHandler(data) {
+            //dom to fetch data in main page
+        }
+
         function caller(id) {
 
             fetch(`respon.php?id=${id}`)
