@@ -80,7 +80,7 @@
                     echo "<tr>";
                     echo "<td>" . $row['username'] . "</td>";
                     echo "<td> &nbsp&nbsp&nbsp" . $row['email'] . "</td>";
-                    echo "<td> <button class='btn btn-danger btn-sm' onclick=caller(" . $row['id'] . ")>X</button></td>";
+                    echo "<td> <button class='btn btn-danger btn-sm' onclick=deleteUser(" . $row['id'] . ")>X</button></td>";
                     echo "</tr>";
                 }
 
@@ -91,28 +91,31 @@
         </div>
     </div>
 
-    <script>
-        //! need to refactor this whole code
-        //! have to make fetch of whole data through here
-        function fetchDashboardData() {
-            //fetch call
-            //loop through data
+    <!-- <script>
+    
+        window.onload = function() {
 
+            fetch(`userList.php`)
+                .then(response => response.json())
+                .then(data => {
+                    fetchDataHandler(data)
+                });
         }
 
         function fetchDataHandler(data) {
-            //dom to fetch data in main page
+            console.log(data);
+
         }
 
-        function caller(id) {
+        function deleteUser(id) {
 
-            fetch(`respon.php?id=${id}`)
+            fetch(`deleteUser.php?id=${id}`)
                 .then(response => response.json())
                 .then(data => {
                     location.reload();
                 });
         }
-    </script>
+    </script> -->
 
 </body>
 
