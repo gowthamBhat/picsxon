@@ -1,0 +1,89 @@
+body{
+    background: rgb(10,7,52);
+    background: linear-gradient(90deg, rgba(10,7,52,1) 0%, rgba(127,38,38,1) 65%, rgba(11,43,49,1) 100%);
+}
+
+#admin{
+    border-radius: 50%;
+    margin-top: 20px;
+
+}
+#image-container figcaption{
+   margin-top: 5px;
+   font-weight: bold;
+   font-family: 'Courier New', Courier, monospace;
+   font-size:larger;
+   color: white;
+}
+#image-container{
+    position: relative;
+    background: rgb(10,7,52);
+    background: linear-gradient(90deg, rgba(10,7,52,1) 0%, rgba(127,38,38,1) 65%, rgba(11,43,49,1) 100%);
+
+}
+#image-container #cam-icon{
+    position: absolute;
+    top: 310px;
+    left: 55%;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    transform: translateX(-50%);
+  width: 38px;
+  height: 38px;
+  background: #f8f8f8;
+}
+#image-container img{
+    opacity: 0.8;
+}
+.user-list{
+    width: 400px;
+    height: 400px;
+    margin-left: 550px;
+    
+}
+.list-container{
+    background: rgb(10,7,52);
+background: linear-gradient(90deg, rgba(10,7,52,1) 0%, rgba(127,38,38,1) 57%, rgba(11,43,49,1) 100%);
+display: block;
+}
+.user-count{
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color:white;
+   position: relative;
+   left: 350px;
+}
+.nav-container-upload{
+
+position: relative;
+top: 26px;
+left: 67%;
+}
+.nav-container-2-user{
+
+    position: relative;
+    top: -12px;
+    left: 75%;
+    }
+/* .nav-container button{
+    padding: 4px 4px;
+} */
+.table-data th{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color:#3e4541;
+    color: white;
+
+}
+.table-data td{
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+.table-data{
+    background: rgb(10,7,52);
+    background: linear-gradient(90deg, rgba(10,7,52,1) 0%, rgba(127,38,38,1) 57%, rgba(11,43,49,1) 100%);
+color: white;
+width: 100%;
+padding: 5px 5px;
+}

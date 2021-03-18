@@ -84,11 +84,16 @@ function carousel(root) {
 //navigate to login-page
 let loginButton = document.getElementById("login");
 loginButton.addEventListener("click", function () {
-    window.location.assign("./data/userlogin.html");
+    window.location.assign("./auth/login.php");
 });
 
 let galleryButton = document.getElementById("gallery");
 galleryButton.addEventListener("click", function () {
     window.location.assign("./data/user/gallery.php");
 });
+let adminButton = document.getElementById("admin");
+adminButton.addEventListener("click", function () {
+    window.location.assign("./data/admin/admindashboard.php");
+});
+
 

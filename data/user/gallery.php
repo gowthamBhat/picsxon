@@ -15,7 +15,47 @@
     <title> Gallery</title>
 
     <link rel="stylesheet" type="text/css" href="../../styles/bootstrap.min.css">
+
     <link rel="stylesheet" type="text/css" href="../../styles/gallery.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+
+    <style>
+        a {
+            text-decoration: none !important;
+        }
+
+        /* .column {
+            float: left;
+            display: block;
+            width: 30%;
+            margin: 10px 10px;
+            padding: 0 8px;
+        }
+
+       
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+
+       
+        .container {
+            padding: 0 16px;
+        }
+
+    
+        .container::after,
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .title {
+            color: grey;
+        } */
+    </style>
+
+    <script async defer src="/js/gallery.js"></script>
 
 
 </head>
@@ -30,15 +70,43 @@
 
 
     </div>
-    <div class="col">
-        <div class="row">
+
+    <div class="row">
+        <div class="col-2 category-list">
+            <!-- list -->
+            <div class="" style="width: fit-content;">
+                <div class="list-group" style="width: fit-content;">
+                    <?php
+
+                    //connecting to database
+                    $con = mysqli_connect("localhost", "root", "", "picsxon") or die("con Error " . mysqli_error($con));
+
+                    //List query
+                    $sqlQuery = 'SELECT DISTINCT category FROM pictures';
+                    $sqlResult = mysqli_query($con, $sqlQuery);
+                    if (!$sqlResult) {
+                        echo "query failed";
+                        return;
+                    }
+
+
+
+                    echo '<a  href="gallery.php"><button type="button" class="list-group-item list-group-item-action ">All</button></a> ';
+                    while ($row = mysqli_fetch_array($sqlResult)) {
+
+                        echo '<a href="gallery.php?category=' . $row['category'] . ' " > <button type="button" class="list-group-item list-group-item-action ">' . $row['category'] . ' </button></a> ';
+                    }
+
+
+                    ?>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <!-- picture -->
             <div id="img-conatainer">
 
                 <?php
-                //connecting to database
-                $con = mysqli_connect("localhost", "root", "", "picsxon") or die("con Error " . mysqli_error($con));
-
-
 
                 //photo upload time indicator function
                 function timeAgo($time_ago)
@@ -107,19 +175,31 @@
                     }
                 }
 
-                //Results that allowed per page
-                $results_per_page = 8;
+                //Results allowed per page
+                $results_per_page = 6;
 
-                //Retreving all the data
-                $q = "SELECT * FROM pictures";
+
+                //Handling Category Query-Param
+                if (!isset($_GET['category'])) {
+                    $q = "SELECT * FROM pictures";
+                } else {
+                    $getCategory = $_GET['category'];
+                    // echo  "SELECT * FROM sold WHERE uname='$uname'";
+                    $q = "SELECT * FROM pictures WHERE category='$getCategory'";
+                }
+
+
 
                 $res = mysqli_query($con, $q);
 
                 if (!$res) {
                     echo "query error";
+                    return;
                 }
                 //This will return the number of results in the table
                 $number_of_results = mysqli_num_rows($res);
+
+
 
                 // determine number of total pages available
                 $number_of_pages = ceil($number_of_results / $results_per_page);
@@ -134,10 +214,41 @@
                 // determine the sql LIMIT starting number for the results on the displaying page
                 $this_page_first_result = ($page - 1) * $results_per_page;
 
-                $sql = ' SELECT * FROM pictures ORDER BY like_count DESC LIMIT ' . $this_page_first_result . ',' .  $results_per_page;
+                if (!isset($_GET['category'])) {
+
+                    $sql = ' SELECT * FROM pictures ORDER BY like_count DESC,id ASC LIMIT ' . $this_page_first_result . ',' .  $results_per_page;
+                } else {
+                    $getCategory = $_GET['category'];
+
+                    $sql = "SELECT * FROM pictures WHERE category='$getCategory' ORDER BY like_count DESC,id ASC LIMIT " . $this_page_first_result . "," . $results_per_page;
+                }
+
+
+
                 $result = mysqli_query($con, $sql);
+                if (!$result) {
+                    echo "query failed";
+                    return;
+                }
 
                 while ($row = mysqli_fetch_array($result)) {
+
+
+                    // echo "<div class='row'>";
+                    // echo "<div class='column'>";
+                    // echo " <div class='card'>";
+                    // echo "  <img src='../admin/images/" . $row['path'] . "' alt='Card image cap' style='width:100%'>";
+
+                    // echo "<div class='container'>";
+                    // echo " <h5 class='card-title'>" . $row['picture_name'] . "</h5> ";
+                    // echo    "<p class='title'>Category:</p>" . $row['category'];
+                    // echo  "&nbsp  like:" . $row['like_count'] . "&nbsp  dislike:" . $row['dislike_count'] . "</p>";
+                    // echo "<i class='far fa-heart fa-2x'></i>&nbsp &nbsp &nbsp &nbsp <i class='fas fa-heart-broken fa-2x'></i>";
+                    // echo "&nbsp &nbsp &nbsp &nbsp";
+                    // echo timeAgo($row['timestamp']);
+                    // echo "</div>";
+                    // echo "</div>";
+                    // echo "  </div>";
 
 
                     echo "<div class='card' style='width: 18rem;'> ";
@@ -145,7 +256,10 @@
                     echo " <div class='card-body'> ";
                     echo " <h5 class='card-title'>" . $row['picture_name'] . "</h5> ";
                     echo " <p class='card-text'>Category:" . $row['category'] . "&nbsp  like:" . $row['like_count'] . "&nbsp  dislike:" . $row['dislike_count'] . "</p> ";
-
+                    echo "<i class='far fa-heart fa-2x'></i>";
+                    echo "&nbsp &nbsp &nbsp &nbsp";
+                    echo " <i class='fas fa-heart-broken fa-2x'></i>";
+                    echo "&nbsp &nbsp &nbsp &nbsp";
                     echo timeAgo($row['timestamp']); //calling timeago function 
 
                     echo "  </div> ";
@@ -160,28 +274,39 @@
 
             </div>
         </div>
+    </div>
+    <div class="row-2">
+        <!-- pagination -->
 
-        <div class="row">
-            <div class="paginationBar">
-                <nav aria-label="...">
-                    <ul class="pagination pagination-lg">
-                        <?php
-                        // display the links to the pages
+        <div class="paginationBar">
+            <nav aria-label="...">
+                <ul class="pagination pagination-lg">
+                    <?php
+                    // display the links to the pages
+                    if (!isset($_GET['category'])) {
+
                         for ($page = 1; $page <= $number_of_pages; $page++) {
+
                             echo  "<li class='page-item'>";
                             echo '<a class="page-link" href="gallery.php?page=' . $page . '" tabindex="-1">' . $page . '</a>';
                             echo " </li>";
-                            // echo '<a class="" href="gallery.php?page=' . $page . '">' . $page . '</a> ';
                         }
+                    } else {
+                        $getCategory = $_GET['category'];
+                        for ($page = 1; $page <= $number_of_pages; $page++) {
+                            echo  "<li class='page-item'>";
 
-                        ?>
-                    </ul>
-                </nav>
-            </div>
+                            echo '<a class="page-link" href="gallery.php?page=' . $page . '&category=' . $getCategory . ' " " tabindex="-1">' . $page . '</a>';
 
+                            echo " </li>";
+                        }
+                    }
+
+                    ?>
+                </ul>
+            </nav>
         </div>
     </div>
-
 
 
 
