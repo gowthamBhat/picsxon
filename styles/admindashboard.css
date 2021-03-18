@@ -44,7 +44,7 @@ body{
 .list-container{
     background: rgb(10,7,52);
 background: linear-gradient(90deg, rgba(10,7,52,1) 0%, rgba(127,38,38,1) 57%, rgba(11,43,49,1) 100%);
-display: none;
+display: block;
 }
 .user-count{
     font-weight: bold;

@@ -15,7 +15,7 @@
         }
 
         .list-hide {
-            display: block;
+            display: none;
         }
     </style>
     <title>Document</title>
