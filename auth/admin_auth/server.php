@@ -79,7 +79,7 @@ if (isset($_POST['login_user'])) {
     if (mysqli_num_rows($results) == 1) {
       $_SESSION['admin'] = $username;
       $_SESSION['success'] = "You are now logged in";
-      header('location: http://localhost/picsxon/data/user/gallery.php');
+      header('location: ../../data/admin/adminDashboard.php');
     } else {
       array_push($errors, "Wrong username/password combination");
     }
