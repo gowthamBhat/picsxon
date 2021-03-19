@@ -58,7 +58,7 @@ if (isset($_POST['reg_user'])) {
     mysqli_query($con, $query);
     $_SESSION['username'] = $username;
     $_SESSION['success'] = "You are now logged in";
-    header('location: http://localhost/picsxon/data/user/gallery.php');
+    header('location: ../../data/user/gallery.php');
   }
 }
 
