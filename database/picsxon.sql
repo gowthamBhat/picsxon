@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2021 at 05:02 PM
+-- Generation Time: Mar 19, 2021 at 02:22 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -21,6 +21,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `picsxon`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `password`, `email`) VALUES
+(1, 'theadmin', '0192023a7bbd73250516f069df18b500', 'theadmin@gmail.com'),
+(2, 'admin2', '4297f44b13955235245b2497399d7a93', 'admin2@nfmf.com');
 
 -- --------------------------------------------------------
 
@@ -71,16 +92,18 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`) VALUES
-(1, 'suhutha', '81dc9bdb52d04dc20036dbd8313ed055', 'gsuhruthasuhu@gmail.com'),
-(2, 'suhu', 'd2ca24a62a3cf6f2e236bcfe4fa3c3b1', 'suhu@gmail.com'),
-(3, 'pes', 'a7329a9971b2ea188477533dfbf1963b', 'pes.edu'),
-(4, 'edna', 'f5fa02bc60f633f3b1781a824f5211b5', 'edna@gmail.com'),
-(5, 'gowtham', '81dc9bdb52d04dc20036dbd8313ed055', 'gowtham@gmail.com'),
-(6, 'gowth', '9d032048748881a7ebde85e090627262', 'gowthambhat793@gmail.com');
+(17, 'shree ram', '4297f44b13955235245b2497399d7a93', 'shreeram@gmail.com'),
+(19, 'gowtham', 'f56561c916e79a9c7be7b1b853090737', 'gowthambhat793@gmail.com');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `pictures`
@@ -99,6 +122,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `pictures`
 --
 ALTER TABLE `pictures`
@@ -108,7 +137,7 @@ ALTER TABLE `pictures`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

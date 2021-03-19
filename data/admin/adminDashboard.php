@@ -35,9 +35,9 @@
         <div class="nav-container-2-user">
             <button id="user-list-view" class=" btn btn-dark">view users</button>
         </div>
-
-
-
+        <div class="nav-container-admin" style="width: fit-content;">
+            <a href="../../auth/admin_auth/register.php"><button id="addAdmin" class=" btn btn-dark">Add Admin</button></a>
+        </div>
 
     </nav>
     <center>

@@ -4,15 +4,15 @@
 
 <head>
 	<title>Register</title>
-	<link rel="stylesheet" type="text/css" href="../styles/auth.css">
+	<link rel="stylesheet" type="text/css" href="../../styles/auth.css">
 </head>
 
 <body>
 	<div class="header">
-		<h2>Register</h2>
+		<h2>User Register</h2>
 	</div>
 
-	<form method="post" action="register.php">
+	<form name="myForm" method="post" action="register.php" onsubmit="return validationForm()">
 		<?php include('errors.php'); ?>
 		<div class="input-group">
 			<label>Username</label>
@@ -37,6 +37,30 @@
 			Already a member? <a href="login.php">Sign in</a>
 		</p>
 	</form>
+	<script>
+		function validationForm() {
+			let username = document.forms["myForm"]["username"].value;
+			if (username == "") {
+				alert("Name must be filled out");
+				return false;
+			}
+			let password1 = document.forms["myForm"]["password1"].value;
+			if (password1 == "") {
+				alert("password must be filled out");
+				return false;
+			}
+			let password2 = document.forms["myForm"]["password2"].value;
+			if (password2 == "") {
+				alert("password must be filled out");
+				return false;
+			}
+			let email = document.forms["myForm"]["email"].value;
+			if (email == "") {
+				alert("email must be filled out");
+				return false;
+			}
+		}
+	</script>
 </body>
 
 </html>

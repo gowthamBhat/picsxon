@@ -143,7 +143,7 @@ if (isset($_POST['submit'])) {
 
 
                     <tr>
-                        <th>Pet Photo</th>
+                        <th>Select Image</th>
                         <td><input type="file" name="image" class="btn btn-dark btn-sm" required></td>
 
 
