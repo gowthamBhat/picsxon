@@ -8,25 +8,25 @@ user.addEventListener('click', function (event) {
 
 //* Fetch call scripts
 
-window.onload = function () {
+// window.onload = function () {
 
-    fetch(`userList.php`)
-        .then(response => response.json())
-        .then(data => {
-            fetchDataHandler(data)
-        });
-}
+//     fetch(`userList.php`)
+//         .then(response => response.json())
+//         .then(data => {
+//             fetchDataHandler(data)
+//         });
+// }
 
-function fetchDataHandler(data) {
-    console.log(data);
+// function fetchDataHandler(data) {
+//     console.log(data);
 
-}
+// }
 
-function deleteUser(id) {
+// function deleteUser(id) {
 
-    fetch(`deleteUser.php?id=${id}`)
-        .then(response => response.json())
-        .then(data => {
-            location.reload();
-        });
-}
+//     fetch(`deleteUser.php?id=${id}`)
+//         .then(response => response.json())
+//         .then(data => {
+//             location.reload();
+//         });
+// }

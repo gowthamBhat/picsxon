@@ -22,11 +22,14 @@
 </head>
 
 <body>
+    <a href="../../index.html">
+        <h1 style="margin:30px 50px">Picsxon</h1>
+    </a>
     <nav>
         <div class="nav-container-upload">
 
 
-            <a href="photoupload.php"><button class="nav btn btn-dark testing">Upload Photo</button></a>
+            <a href="photoupload.php"><button class="nav btn btn-dark">Upload Photo</button></a>
 
         </div>
         <div class="nav-container-2-user">
@@ -52,49 +55,20 @@
     <div class="list-container" id="list-container">
         <div class="user-list">
 
-            <table class='table-data'>
-
-                <?php
-
-                include '../../database/DBconnection.php';
-
-                $search_query = "SELECT * FROM users";
-                $res = mysqli_query($con,  $search_query);
+            <table class='table-data' id="user-table">
 
 
-
-                echo "<div class='user-count'>Available Users - <button class='btn btn-dark'> " . mysqli_num_rows($res) . " </button></div>";
-
-                echo "
-							<div style='clear:both;'></div>
-							<thead>
-					<tr>
-						<th>Name</th>
-						<th>Email</th>
-                        <th></th>
-
-					</tr>
-				</thead>";
-
-                while ($row = mysqli_fetch_array($res)) {
-                    echo "<tr>";
-                    echo "<td>" . $row['username'] . "</td>";
-                    echo "<td> &nbsp&nbsp&nbsp" . $row['email'] . "</td>";
-                    echo "<td> <button class='btn btn-danger btn-sm' onclick=deleteUser(" . $row['id'] . ")>X</button></td>";
-                    echo "</tr>";
-                }
-
-
-                ?>
             </table>
 
         </div>
     </div>
 
-    <!-- <script>
-    
-        window.onload = function() {
+    <script>
+        var user_table = document.getElementById("user-table");
 
+        window.onload = fetchCall();
+
+        function fetchCall() {
             fetch(`userList.php`)
                 .then(response => response.json())
                 .then(data => {
@@ -103,7 +77,35 @@
         }
 
         function fetchDataHandler(data) {
+            let userListOutPut = '';
             console.log(data);
+
+            if (data == 0) {
+                userListOutPut = `<thead>
+            <tr>
+                <th><h3>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp No Users Found </h3></th>
+               
+            </tr>
+        </thead>`;
+            } else {
+                userListOutPut = `<thead>
+            <tr>
+                <th>&nbsp&nbsp&nbsp Name </th>
+                <th> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Email </th>
+                <th> </th>
+            </tr>
+        </thead>`;
+
+
+
+                for (let i = 0; i < data.length; i++) {
+                    userListOutPut += "<tr><td>" + data[i][1] + "</td> <td> &nbsp&nbsp&nbsp " + data[i][3] + "</td> <td> <button class='btn btn-danger btn-sm' onclick=deleteUser(" + data[i][0] + ")>X</button></td> </tr>"
+                }
+
+            }
+
+            user_table.innerHTML = userListOutPut;
+
 
         }
 
@@ -112,10 +114,10 @@
             fetch(`deleteUser.php?id=${id}`)
                 .then(response => response.json())
                 .then(data => {
-                    location.reload();
+                    fetchCall();
                 });
         }
-    </script> -->
+    </script>
 
 </body>
 

@@ -54,7 +54,7 @@ display: block;
    left: 350px;
 }
 .nav-container-upload{
-
+width: fit-content;
 position: relative;
 top: 26px;
 left: 67%;
@@ -64,6 +64,7 @@ left: 67%;
     position: relative;
     top: -12px;
     left: 75%;
+    width: fit-content;
     }
 /* .nav-container button{
     padding: 4px 4px;
