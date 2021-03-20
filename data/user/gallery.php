@@ -79,7 +79,8 @@
                     <?php
 
                     //connecting to database
-                    $con = mysqli_connect("localhost", "root", "", "picsxon") or die("con Error " . mysqli_error($con));
+                    // $con = mysqli_connect("localhost", "root", "", "picsxon") or die("con Error " . mysqli_error($con));
+                    include '../../database/DBconnection.php';
 
                     //List query
                     $sqlQuery = 'SELECT DISTINCT category FROM pictures';

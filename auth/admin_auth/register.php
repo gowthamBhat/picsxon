@@ -33,9 +33,9 @@
 		<div class="input-group">
 			<button type="submit" class="btn" name="reg_user">Register</button>
 		</div>
-		<p>
+		<!-- <p>
 			Already a member? <a href="login.php">Sign in</a>
-		</p>
+		</p> -->
 	</form>
 	<script>
 		function validationForm() {
@@ -47,6 +47,10 @@
 			let password1 = document.forms["myForm"]["password1"].value;
 			if (password1 == "") {
 				alert("password must be filled out");
+				return false;
+			}
+			if (password1.length < 6) {
+				alert("password must be 6 letters long");
 				return false;
 			}
 			let password2 = document.forms["myForm"]["password2"].value;
