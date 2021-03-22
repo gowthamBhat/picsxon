@@ -1,11 +1,12 @@
 <?php
 
 
-try {
-    $con = mysqli_connect('localhost', 'root', '', 'picsxon');
-} catch (MySQli_Sql_Exception $ex) {
-    echo "connection Error:" . $ex;
-}
+// try {
+//     $con = mysqli_connect('localhost', 'root', '', 'picsxon');
+// } catch (MySQli_Sql_Exception $ex) {
+//     echo "connection Error:" . $ex;
+// }
+include '../../database/DBconnection.php';
 
 
 // session_start();
