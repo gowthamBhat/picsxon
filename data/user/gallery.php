@@ -18,6 +18,9 @@
 
     <link rel="stylesheet" type="text/css" href="../../styles/gallery.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <script src="../../js/jquery.js"></script>
+
+    <script src="vote.js"></script>
     <script async defer src="../../js/gallery.js"></script>
 
     <style>
@@ -47,6 +50,10 @@
             <div class="" style="width: fit-content;">
                 <div class="list-group" style="width: fit-content;">
                     <?php
+
+                    include('Posts.php');
+                    $posts = new Posts();
+                    $postsData = $posts->getPosts(); //from like component
 
                     //connecting to database
                     // $con = mysqli_connect("localhost", "root", "", "picsxon") or die("con Error " . mysqli_error($con));
@@ -187,11 +194,11 @@
 
                 if (!isset($_GET['category'])) {
 
-                    $sql = ' SELECT * FROM pictures ORDER BY like_count DESC,id ASC LIMIT ' . $this_page_first_result . ',' .  $results_per_page;
+                    $sql = ' SELECT * FROM pictures ORDER BY vote_up DESC,id ASC LIMIT ' . $this_page_first_result . ',' .  $results_per_page;
                 } else {
                     $getCategory = $_GET['category'];
 
-                    $sql = "SELECT * FROM pictures WHERE category='$getCategory' ORDER BY like_count DESC,id ASC LIMIT " . $this_page_first_result . "," . $results_per_page;
+                    $sql = "SELECT * FROM pictures WHERE category='$getCategory' ORDER BY vote_up DESC,id ASC LIMIT " . $this_page_first_result . "," . $results_per_page;
                 }
 
 
@@ -211,11 +218,15 @@
                     echo "<img class='card-img-top' src='../admin/images/" . $row['path'] . "' alt='Card image cap'> "; //bootstrap card-view is used
                     echo " <div class='card-body'> ";
                     echo " <h5 class='card-title'>" . $row['picture_name'] . "</h5> ";
-                    echo " <p class='card-text'>Category:" . $row['category'] . "&nbsp  like:" . $row['like_count'] . "&nbsp  dislike:" . $row['dislike_count'] . "</p> ";
-                    echo "<i class='far fa-heart fa-2x'></i>";
-                    echo "&nbsp &nbsp &nbsp &nbsp";
-                    echo " <i class='fas fa-heart-broken fa-2x'></i>";
-                    echo "&nbsp &nbsp &nbsp &nbsp";
+                    echo "<a class='options' data-vote-type='1' id='post_vote_up_" . $row['id'] . "'><i class='far fa-heart fa-2x' data-original-title='Like this post'></i></a>";
+                    echo "<span class='counter' id='vote_up_count_" . $row['id'] . "'>&nbsp;&nbsp;" . $row['vote_up'] . "</span>&nbsp;&nbsp;&nbsp";
+                    echo "<a class='options' data-vote-type='0' id='post_vote_down_ " . $row['id'] . "'><i class='fas fa-heart-broken fa-2x' data-original-title='Dislike this post' ></i></a>";
+                    echo "<span class='counter' id='vote_down_count_" . $row['id'] . "'>&nbsp;&nbsp;" . $row['vote_down'] . "</span>";
+                    //  echo " <p class='card-text'>Category:" . $row['category'] . "&nbsp  like:" . $row['vote_up'] . "&nbsp  dislike:" . $row['vote_down'] . "</p> ";
+                    // echo "<i class='far fa-heart fa-2x'></i>";
+                    //echo "&nbsp &nbsp &nbsp &nbsp";
+
+                    // echo "&nbsp &nbsp &nbsp &nbsp";
                     echo timeAgo($row['timestamp']); //calling timeago function 
 
                     echo "  </div> ";
