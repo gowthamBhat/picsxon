@@ -218,16 +218,19 @@
                     echo "<img class='card-img-top' src='../admin/images/" . $row['path'] . "' alt='Card image cap'> "; //bootstrap card-view is used
                     echo " <div class='card-body'> ";
                     echo " <h5 class='card-title'>" . $row['picture_name'] . "</h5> ";
-                    echo "<a class='options' data-vote-type='1' id='post_vote_up_" . $row['post_id'] . "'><i class='far fa-heart fa-2x' data-original-title='Like this post'></i></a>";
+                    echo " <label class='card-text'>Category:&nbsp" . $row['category'] . "</label>";
+                    echo "<br/>";
+                    echo "<a class='options' data-vote-type='1' id='post_vote_up_" . $row['post_id'] . "'><i class='far fa-heart fa-1x' data-original-title='Like this post'></i></a>";
                     echo "<span class='counter' id='vote_up_count_" . $row['post_id'] . "'>&nbsp;&nbsp;" . $row['vote_up'] . "</span>&nbsp;&nbsp;&nbsp";
-                    echo "<a class='options' data-vote-type='0' id='post_vote_down_ " . $row['post_id'] . "'><i class='fas fa-heart-broken fa-2x' data-original-title='Dislike this post' ></i></a>";
+                    echo "<a class='options' data-vote-type='0' id='post_vote_down_ " . $row['post_id'] . "'><i class='fas fa-heart-broken fa-1x' data-original-title='Dislike this post' ></i></a>";
                     echo "<span class='counter' id='vote_down_count_" . $row['post_id'] . "'>&nbsp;&nbsp;" . $row['vote_down'] . "</span>";
                     //  echo " <p class='card-text'>Category:" . $row['category'] . "&nbsp  like:" . $row['vote_up'] . "&nbsp  dislike:" . $row['vote_down'] . "</p> ";
                     // echo "<i class='far fa-heart fa-2x'></i>";
                     //echo "&nbsp &nbsp &nbsp &nbsp";
 
-                    // echo "&nbsp &nbsp &nbsp &nbsp";
-                    echo timeAgo($row['timestamp']); //calling timeago function 
+                    echo "&nbsp";
+                    $time = timeAgo($row['timestamp']);
+                    echo "<strong><label>$time</label> </strong>"; //calling timeago function 
 
                     echo "  </div> ";
                     echo "  </div> ";
