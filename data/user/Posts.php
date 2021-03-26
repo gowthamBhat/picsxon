@@ -34,7 +34,7 @@ class Posts
 	}
 	public function getPosts()
 	{
-		$sqlQuery = 'SELECT id,timestamp, vote_up, vote_down FROM ' . $this->postTable;
+		$sqlQuery = 'SELECT post_id,timestamp, vote_up, vote_down FROM ' . $this->postTable;
 		return  $this->executeQuery($sqlQuery);
 	}
 	public function isUserAlreadyVoted($user_id, $post_id)
@@ -51,7 +51,7 @@ class Posts
 	}
 	public function getPostVotes($post_id)
 	{
-		$sqlQuery = 'SELECT id, vote_up, vote_down FROM ' . $this->postTable . " WHERE id = '" . $post_id . "'";
+		$sqlQuery = 'SELECT post_id, vote_up, vote_down FROM ' . $this->postTable . " WHERE post_id = '" . $post_id . "'";
 		$result = mysqli_query($this->dbConnect, $sqlQuery);
 		return  mysqli_fetch_array($result);
 	}

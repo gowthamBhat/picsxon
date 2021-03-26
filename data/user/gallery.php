@@ -194,11 +194,11 @@
 
                 if (!isset($_GET['category'])) {
 
-                    $sql = ' SELECT * FROM pictures ORDER BY vote_up DESC,id ASC LIMIT ' . $this_page_first_result . ',' .  $results_per_page;
+                    $sql = ' SELECT * FROM pictures ORDER BY vote_up DESC,post_id ASC LIMIT ' . $this_page_first_result . ',' .  $results_per_page;
                 } else {
                     $getCategory = $_GET['category'];
 
-                    $sql = "SELECT * FROM pictures WHERE category='$getCategory' ORDER BY vote_up DESC,id ASC LIMIT " . $this_page_first_result . "," . $results_per_page;
+                    $sql = "SELECT * FROM pictures WHERE category='$getCategory' ORDER BY vote_up DESC,post_id ASC LIMIT " . $this_page_first_result . "," . $results_per_page;
                 }
 
 
@@ -218,10 +218,10 @@
                     echo "<img class='card-img-top' src='../admin/images/" . $row['path'] . "' alt='Card image cap'> "; //bootstrap card-view is used
                     echo " <div class='card-body'> ";
                     echo " <h5 class='card-title'>" . $row['picture_name'] . "</h5> ";
-                    echo "<a class='options' data-vote-type='1' id='post_vote_up_" . $row['id'] . "'><i class='far fa-heart fa-2x' data-original-title='Like this post'></i></a>";
-                    echo "<span class='counter' id='vote_up_count_" . $row['id'] . "'>&nbsp;&nbsp;" . $row['vote_up'] . "</span>&nbsp;&nbsp;&nbsp";
-                    echo "<a class='options' data-vote-type='0' id='post_vote_down_ " . $row['id'] . "'><i class='fas fa-heart-broken fa-2x' data-original-title='Dislike this post' ></i></a>";
-                    echo "<span class='counter' id='vote_down_count_" . $row['id'] . "'>&nbsp;&nbsp;" . $row['vote_down'] . "</span>";
+                    echo "<a class='options' data-vote-type='1' id='post_vote_up_" . $row['post_id'] . "'><i class='far fa-heart fa-2x' data-original-title='Like this post'></i></a>";
+                    echo "<span class='counter' id='vote_up_count_" . $row['post_id'] . "'>&nbsp;&nbsp;" . $row['vote_up'] . "</span>&nbsp;&nbsp;&nbsp";
+                    echo "<a class='options' data-vote-type='0' id='post_vote_down_ " . $row['post_id'] . "'><i class='fas fa-heart-broken fa-2x' data-original-title='Dislike this post' ></i></a>";
+                    echo "<span class='counter' id='vote_down_count_" . $row['post_id'] . "'>&nbsp;&nbsp;" . $row['vote_down'] . "</span>";
                     //  echo " <p class='card-text'>Category:" . $row['category'] . "&nbsp  like:" . $row['vote_up'] . "&nbsp  dislike:" . $row['vote_down'] . "</p> ";
                     // echo "<i class='far fa-heart fa-2x'></i>";
                     //echo "&nbsp &nbsp &nbsp &nbsp";
@@ -255,7 +255,7 @@
                         for ($page = 1; $page <= $number_of_pages; $page++) {
 
                             echo  "<li class='page-item'>";
-                            echo '<a class="page-link" href="gallery.php?page=' . $page . '" tabindex="-1">' . $page . '</a>';
+                            echo '<a class="page-link" href="gallery.php?page=' . $page . '" >' . $page . '</a>';
                             echo " </li>";
                         }
                     } else {
