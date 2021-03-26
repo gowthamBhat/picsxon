@@ -15,7 +15,7 @@
         }
 
         .list-hide {
-            display: none;
+            display: block;
         }
     </style>
     <title>Document</title>
@@ -34,6 +34,7 @@
         </div>
         <div class="nav-container-2-user">
             <button id="user-list-view" class=" btn btn-dark">view users</button>
+            <button id="getPictures" class="btn btn-dark">Get Pictures</button>
         </div>
         <div class="nav-container-admin" style="width: fit-content;">
             <a href="../../auth/admin_auth/register.php"><button id="addAdmin" class=" btn btn-dark">Add Admin</button></a>
@@ -54,15 +55,57 @@
 
     <div class="list-container" id="list-container">
         <div class="user-list">
-
             <table class='table-data' id="user-table">
-
-
             </table>
-
         </div>
     </div>
+    <div class="picturelist-container">
+        <div class="picture-list">
+            <table class="table-data" id="pictureTable">
+            </table>
+        </div>
+    </div>
+    <br>
+    <script>
+        var getPic = document.getElementById('getPictures').addEventListener('click', getPictures);
+        var pictureTable = document.getElementById("pictureTable");
 
+        function getPictures() {
+            fetch('picturelist.php')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    HandlePictureResponse(data);
+                });
+        }
+
+        function HandlePictureResponse(data) {
+            let tableData = ` 
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">picture name</th>
+      <th scope="col">Category</th>
+      <th scope="col">Likes</th>
+      <th scope="col">dislike</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>`;
+            for (let i = 0; i < data.length; i++) {
+                tableData += "<tr><td>" + data[i][0] + "</td> <td> &nbsp&nbsp&nbsp " + data[i][1] + "</td> <td> &nbsp&nbsp&nbsp " + data[i][2] + "</td> <td>  " + data[i][3] + "</td> <td>  " + data[i][4] + "</td><td> <button class='btn btn-danger btn-sm' onclick=deletePicture(" + data[i][0] + ")>X</button></td>  </tr>"
+            }
+
+            pictureTable.innerHTML = tableData;
+        }
+
+        function deletePicture(id) {
+            fetch(`deletePicture.php?id=${id}`)
+                .then(response => response.json())
+                .then(data => {
+                    getPictures();
+                });
+        }
+    </script>
 </body>
 
 </html>
