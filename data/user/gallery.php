@@ -7,6 +7,7 @@
         header('location:../../auth/user_auth/login.php');
     } else {
         $uname  = $_SESSION['username'];
+        $userId = $_SESSION['id'];
 
     ?>
 

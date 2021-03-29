@@ -1,8 +1,9 @@
 <?php
+session_start();
 include('Posts.php');
 $posts = new Posts();
 // get logged in userid to vote
-$user_id = 99; //!from session we have to pass the user id
+$user_id = $_SESSION['id'];; //!from session we have to pass the user id
 if ($_POST['post_id'] && $user_id) {
 	$postVote = $posts->getPostVotes($_POST['post_id']);
 	$userVote = $posts->getUserVotes($user_id, $_POST['post_id']);
