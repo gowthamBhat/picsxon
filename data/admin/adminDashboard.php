@@ -41,6 +41,7 @@ if (!isset($_SESSION['admin'])) {
             <div class="nav-container-2-user">
                 <button id="user-list-view" class=" btn btn-dark">view users</button>
                 <button id="getPictures" class="btn btn-dark">Get Pictures</button>
+                <a href="../../auth/user_auth/logout.php"> <button class="btn btn-danger">Logout</button></a>
             </div>
             <div class="nav-container-admin" style="width: fit-content;">
                 <a href="../../auth/admin_auth/register.php"><button id="addAdmin" class=" btn btn-dark">Add Admin</button></a>
