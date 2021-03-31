@@ -56,6 +56,12 @@ if (isset($_POST['reg_user'])) {
     $query = "INSERT INTO users (username, email, password) 
   			  VALUES('$username', '$email', '$password')";
     mysqli_query($con, $query);
+
+    $query2 = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+    $results2 = mysqli_query($con, $query2);
+
+    $row = mysqli_fetch_array($results2);
+    $_SESSION['id'] = $row['id'];
     $_SESSION['username'] = $username;
     $_SESSION['success'] = "You are now logged in";
     header('location: ../../data/user/gallery.php');
@@ -79,6 +85,8 @@ if (isset($_POST['login_user'])) {
     $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
     $results = mysqli_query($con, $query);
     if (mysqli_num_rows($results) == 1) {
+      $row = mysqli_fetch_array($results);
+      $_SESSION['id'] = $row['id'];
       $_SESSION['username'] = $username;
       $_SESSION['success'] = "You are now logged in";
       header('location: ../../data/user/gallery.php');

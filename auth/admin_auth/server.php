@@ -6,6 +6,9 @@ $username = "";
 $email    = "";
 $errors = array();
 
+// $redirect =  $_GET['redirect'];
+// echo $redirect;
+
 // connect to the database
 // $con = mysqli_connect('localhost', 'root', '', 'picsxon');
 include '../../database/DBconnection.php';
@@ -80,6 +83,7 @@ if (isset($_POST['login_user'])) {
       $_SESSION['admin'] = $username;
       $_SESSION['success'] = "You are now logged in";
       header('location: ../../data/admin/adminDashboard.php');
+      //header("location: ../../data/admin/$redirect");
     } else {
       array_push($errors, "Wrong username/password combination");
     }
