@@ -41,6 +41,7 @@ if (!isset($_SESSION['admin'])) {
             <div class="nav-container-2-user">
                 <button id="user-list-view" class=" btn btn-dark">view users</button>
                 <button id="getPictures" class="btn btn-dark">Get Pictures</button>
+                <button id="getSuperUserList" class="btn btn-warning">Requests</button>
                 <a href="../../auth/user_auth/logout.php"> <button class="btn btn-danger">Logout</button></a>
             </div>
             <div class="nav-container-admin" style="width: fit-content;">
@@ -73,6 +74,48 @@ if (!isset($_SESSION['admin'])) {
             </div>
         </div>
         <br>
+        <div class="superUser-container">
+            <div class="superUser-list">
+                <table class="table-data" id="superUserList">
+                </table>
+            </div>
+        </div>
+        <script>
+            var superList = document.getElementById('getSuperUserList');
+            superList.addEventListener('click', getSuperUserList);
+
+            function getSuperUserList() {
+                fetch('superUserList.php')
+                    .then(response => response.json())
+                    .then(data => {
+                        HandleSuperUserList(data);
+                    });
+            }
+
+            function HandleSuperUserList(data) {
+                let tableData = ` 
+<thead class="thead-dark">
+<tr>
+<th scope="col">id</th>
+<th scope="col">name</th>
+<th scope="col">Email</th>
+<th scope="col">Accept</th>
+<th scope="col">Decline</th>
+</tr>
+</thead>`;
+                superTable = document.getElementById('superUserList');
+
+                console.log(data);
+
+
+                for (let i = 0; i < data.length; i++) {
+                    tableData += "<tr><td>" + data[i][0] + "</td> <td> &nbsp&nbsp&nbsp " + data[i][1] + "</td> <td> &nbsp&nbsp&nbsp " + data[i][3] + "</td> <td> <button class='btn btn-danger btn-sm' onclick=acceptUser(" + data[i][0] + ")>Accept</button></td> <td> <button class='btn btn-danger btn-sm' onclick=declineUser(" + data[i][0] + ")>Decline</button></td>  </tr>"
+                }
+
+                superTable.innerHTML = tableData;
+
+            }
+        </script>
     </body>
 
     </html>
