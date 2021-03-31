@@ -115,6 +115,22 @@ if (!isset($_SESSION['admin'])) {
                 superTable.innerHTML = tableData;
 
             }
+
+            function acceptUser(id) {
+                fetch(`superUserAccept.php?id=${id}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        getSuperUserList();
+                    });
+            }
+
+            function declineUser(id) {
+                fetch(`superUserDecline.php?id=${id}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        getSuperUserList();
+                    });
+            }
         </script>
     </body>
 
