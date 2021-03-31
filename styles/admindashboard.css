@@ -41,10 +41,19 @@ body{
     margin-left: 550px;
     
 }
+.picture-list{
+    width: 800px;
+    height: 500px;
+    margin-left: 380px;
+}
+.picturelist-container{
+    background: rgb(10,7,52);
+    background: linear-gradient(90deg, rgba(10,7,52,1) 0%, rgba(127,38,38,1) 57%, rgba(11,43,49,1) 100%);
+}
 .list-container{
     background: rgb(10,7,52);
 background: linear-gradient(90deg, rgba(10,7,52,1) 0%, rgba(127,38,38,1) 57%, rgba(11,43,49,1) 100%);
-display: block;
+display: none;
 }
 .user-count{
     font-weight: bold;
@@ -54,7 +63,7 @@ display: block;
    left: 350px;
 }
 .nav-container-upload{
-
+width: fit-content;
 position: relative;
 top: 26px;
 left: 67%;
@@ -64,6 +73,13 @@ left: 67%;
     position: relative;
     top: -12px;
     left: 75%;
+    width: fit-content;
+    }
+    #addAdmin {
+        position: relative;
+        top: -50px;
+        left: 900px;
+        width: fit-content;
     }
 /* .nav-container button{
     padding: 4px 4px;

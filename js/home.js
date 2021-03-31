@@ -84,7 +84,7 @@ function carousel(root) {
 //navigate to login-page
 let loginButton = document.getElementById("login");
 loginButton.addEventListener("click", function () {
-    window.location.assign("./auth/login.php");
+    window.location.assign("./auth/user_auth/login.php");
 });
 
 let galleryButton = document.getElementById("gallery");

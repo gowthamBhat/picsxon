@@ -4,15 +4,15 @@
 
 <head>
 	<title>Login</title>
-	<link rel="stylesheet" type="text/css" href="../styles/auth.css">
+	<link rel="stylesheet" type="text/css" href="../../styles/auth.css">
 </head>
 
 <body>
 	<div class="header">
-		<h2>Login</h2>
+		<h2>User Login</h2>
 	</div>
 
-	<form method="post" action="login.php">
+	<form name="myForm" method="post" action="login.php" onsubmit="return formValidation()">
 		<?php include('errors.php'); ?>
 		<div class="input-group">
 			<label>Username</label>
@@ -29,6 +29,21 @@
 			Not yet a member? <a href="register.php">Sign up</a>
 		</p>
 	</form>
+	<script>
+		function formValidation(x) {
+
+			var x = document.forms["myForm"]["username"].value;
+			if (x == "") {
+				alert("Name must be filled out");
+				return false;
+			}
+			var y = document.forms["myForm"]["password"].value;
+			if (y == "") {
+				alert("password must be filled out");
+				return false;
+			}
+		}
+	</script>
 </body>
 
 </html>
