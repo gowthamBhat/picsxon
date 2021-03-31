@@ -63,6 +63,9 @@ if (isset($_POST['reg_user'])) {
     $row = mysqli_fetch_array($results2);
     $_SESSION['id'] = $row['id'];
     $_SESSION['username'] = $username;
+    $_SESSION['power'] = 0;
+    $_SESSION['status'] = "fresh";
+
     $_SESSION['success'] = "You are now logged in";
     header('location: ../../data/user/gallery.php');
   }
@@ -88,6 +91,8 @@ if (isset($_POST['login_user'])) {
       $row = mysqli_fetch_array($results);
       $_SESSION['id'] = $row['id'];
       $_SESSION['username'] = $username;
+      $_SESSION['power'] = $row['power'];
+      $_SESSION['status'] = $row['status'];
       $_SESSION['success'] = "You are now logged in";
       header('location: ../../data/user/gallery.php');
     } else {

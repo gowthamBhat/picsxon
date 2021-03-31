@@ -47,6 +47,7 @@
              </a>
              <nav>
                  <a href="../../auth/user_auth/logout.php"><button id="logout-btn" class="btn btn-info">Logout</button></a>
+                 <button class="btn btn-success" id="super-btn" name="super" onclick="superusercaller(<?php echo $userId; ?> )">Request Super User</button>
              </nav>
 
 
@@ -160,6 +161,8 @@
                                 }
                             }
                         }
+
+
 
                         //Results allowed per page
                         $results_per_page = 6;
@@ -289,9 +292,24 @@
 
 
 
+         <script>
+             function superusercaller(id) {
+                 var x = document.getElementById('super-btn');
 
+                 fetch(`superUpdate.php?id=${id}`)
+                     .then(response => response.json())
+                     .then(data => {
+                         console.log(data);
+                         x.innerHTML = "Requested";
+                         x.className = "btn btn-warning";
+                         x.disabled = true;
+                     });
+
+             }
+         </script>
 
      </body>
 
      </html>
+
  <?php } ?>
