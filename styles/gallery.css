@@ -101,4 +101,11 @@ body {
   left: 83%;
   padding: 0.7rem 0.7rem;
  }
+ #superUserPhotoUpload{
+  position: absolute;
+  top: 35px;
+  left: 68%;
+  padding: 0.7rem 0.7rem;
+  display:none;
+ }
  

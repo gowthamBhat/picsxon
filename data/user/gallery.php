@@ -46,6 +46,7 @@
                  <p id="main-title">PicsXon</p>
              </a>
              <nav>
+                 <button id="superUserPhotoUpload" class="btn btn-secondary">Upload Photo</button>
                  <a href="../../auth/user_auth/logout.php"><button id="logout-btn" class="btn btn-info">Logout</button></a>
                  <button class="btn btn-success" id="super-btn" name="super" onclick="superusercaller(<?php echo $userId; ?> )">Request Super User</button>
              </nav>
@@ -309,6 +310,7 @@
 
              (function isSuperUserFinder() {
                  var x = document.getElementById('super-btn');
+                 var uploadButton = document.getElementById('superUserPhotoUpload');
                  var id = <?php echo $userId; ?>;
                  fetch(`checkStatus.php?id=${id}`)
                      .then(response => response.json())
@@ -319,6 +321,8 @@
                              x.innerHTML = "Super User";
                              x.className = "btn btn-success";
                              x.disabled = true;
+                             uploadButton.style.display = 'block';
+
                          }
                          if (data[0][5] == 'pending') {
                              x.innerHTML = "Request Pending";
