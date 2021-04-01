@@ -306,6 +306,42 @@
                      });
 
              }
+
+             (function isSuperUserFinder() {
+                 var x = document.getElementById('super-btn');
+                 var id = <?php echo $userId; ?>;
+                 fetch(`checkStatus.php?id=${id}`)
+                     .then(response => response.json())
+                     .then(data => {
+                         console.log(data);
+                         console.log(data[0][4]);
+                         if (data[0][5] == 'accepted') {
+                             x.innerHTML = "Super User";
+                             x.className = "btn btn-success";
+                             x.disabled = true;
+                         }
+                         if (data[0][5] == 'pending') {
+                             x.innerHTML = "Request Pending";
+                             x.className = "btn btn-warning";
+                             x.disabled = true;
+                         }
+                         if (data[0][5] == 'declined') {
+                             x.innerHTML = "rejected";
+                             x.className = "btn btn-danger";
+                             x.disabled = true;
+                         }
+                         if (data[0][5] == 'fresh') {
+                             x.innerHTML = "Request SuperUser";
+                             x.className = "btn btn-info";
+                         }
+                         //  x.innerHTML = "Requested";
+                         //  x.className = "btn btn-warning";
+                         //  x.disabled = true;
+                     });
+
+
+
+             })();
          </script>
 
      </body>
