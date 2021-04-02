@@ -1,11 +1,11 @@
 <?php
 
 session_start();
-if (!isset($_SESSION['admin'])) {
-    header('location:../../auth/admin_auth/login.php?redirect=photoupload');
+if ($_SESSION['username']  && $_SESSION['power'] != 1) {
+    header('location:../../auth/user_auth/login.php');
 } else {
 
-    $adminName = $_SESSION['admin'];
+    $UserName = $_SESSION['username'];
 
     include '../../database/DBconnection.php';
 
@@ -45,9 +45,9 @@ if (!isset($_SESSION['admin'])) {
             $errors[] = 'File size must be excately 2 MB';
         }
         if (empty($errors) == true) {
-            move_uploaded_file($file_tmp, "images/" . $file_name);
+            move_uploaded_file($file_tmp, "../admin/images/" . $file_name);
 
-            $q = "INSERT INTO pictures(picture_name,category,path,type,timestamp,contributor) VALUES ('$picture_name','$category','$file_name','$file_type','$stamp','$adminName')"; //or die ("query error". mysql_error($con)) ;
+            $q = "INSERT INTO pictures(picture_name,category,path,type,timestamp,contributor) VALUES ('$picture_name','$category','$file_name','$file_type','$stamp','$UserName')"; //or die ("query error". mysql_error($con)) ;
 
             $res = mysqli_query($con, $q);
             if (!$res) {
@@ -132,4 +132,5 @@ if (!isset($_SESSION['admin'])) {
     </body>
 
     </html>
-<?php } ?>
+<?php }
+?>

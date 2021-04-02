@@ -103,3 +103,8 @@ color: white;
 width: 100%;
 padding: 5px 5px;
 }
+.superUser-container{
+    height: 300px;
+    width: 600px;
+    margin-left: 380px;
+}

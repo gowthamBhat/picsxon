@@ -1,4 +1,5 @@
 <?php
+
 class Posts
 {
 	private $host  = 'localhost';

@@ -1,4 +1,4 @@
-<?php include('server.php') ?>
+<?php include('registerServer.php') ?>
 <!DOCTYPE html>
 <html>
 

@@ -2,7 +2,6 @@
 
     session_start();
 
-
     if (!isset($_SESSION['username'])) {
         header('location:../../auth/user_auth/login.php');
     } else {
@@ -32,6 +31,10 @@
              a {
                  text-decoration: none !important;
              }
+
+             i {
+                 text-decoration: none !important;
+             }
          </style>
 
 
@@ -46,7 +49,10 @@
                  <p id="main-title">PicsXon</p>
              </a>
              <nav>
-                 <a href="../../auth/user_auth/logout.php"><button id="logout-btn" class="btn btn-info">Logout</button></a>
+
+                 <a href="../../data/user/userPhotoUpload.php"><button id="superUserPhotoUpload" class="btn btn-outline-primary">Upload Photo</button></a>
+                 <button class="btn btn-outline-success" id="super-btn" name="super" onclick="superusercaller(<?php echo $userId; ?> )">Request Super User</button>
+                 <a href="../../auth/user_auth/logout.php"><button id="logout-btn" class="btn btn-outline-danger">Logout</button></a>
              </nav>
 
 
@@ -161,6 +167,8 @@
                             }
                         }
 
+
+
                         //Results allowed per page
                         $results_per_page = 6;
 
@@ -228,6 +236,8 @@
                             echo " <h5 class='card-title'>" . $row['picture_name'] . "</h5> ";
                             echo " <label class='card-text'>Category:&nbsp" . $row['category'] . "</label>";
                             echo "<br/>";
+                            echo " Contributor: @" . $row['contributor'];
+                            echo "<br/>";
                             echo "<a class='options' data-vote-type='1' id='post_vote_up_" . $row['post_id'] . "'><i class='far fa-heart fa-1x' data-original-title='Like this post'></i></a>";
                             echo "<span class='counter' id='vote_up_count_" . $row['post_id'] . "'>&nbsp;&nbsp;" . $row['vote_up'] . "</span>&nbsp;&nbsp;&nbsp";
                             echo "<a class='options' data-vote-type='0' id='post_vote_down_ " . $row['post_id'] . "'><i class='fas fa-heart-broken fa-1x' data-original-title='Dislike this post' ></i></a>";
@@ -236,7 +246,9 @@
                             // echo "<i class='far fa-heart fa-2x'></i>";
                             //echo "&nbsp &nbsp &nbsp &nbsp";
 
-                            echo "&nbsp";
+                            echo "&nbsp&nbsp&nbsp";
+                            echo "<a href='../admin/images/" . $row['path'] . "' download><i class='fas fa-download'></i></a>";
+                            echo "&nbsp&nbsp&nbsp";
                             $time = timeAgo($row['timestamp']);
                             echo "<strong><label>$time</label> </strong>"; //calling timeago function 
 
@@ -289,9 +301,63 @@
 
 
 
+         <script>
+             function superusercaller(id) {
+                 var x = document.getElementById('super-btn');
 
+                 fetch(`superUpdate.php?id=${id}`)
+                     .then(response => response.json())
+                     .then(data => {
+                         console.log(data);
+                         x.innerHTML = "Requested";
+                         x.className = "btn btn-warning";
+                         x.disabled = true;
+                     });
+
+             }
+
+             (function isSuperUserFinder() {
+                 var x = document.getElementById('super-btn');
+                 var uploadButton = document.getElementById('superUserPhotoUpload');
+                 var id = <?php echo $userId; ?>;
+                 fetch(`checkStatus.php?id=${id}`)
+                     .then(response => response.json())
+                     .then(data => {
+                         console.log(data);
+                         console.log(data[0][4]);
+                         if (data[0][5] == 'accepted') {
+                             x.innerHTML = "Super User";
+                             x.className = "btn btn-success";
+                             x.disabled = true;
+                             uploadButton.style.display = 'block';
+
+                         }
+                         if (data[0][5] == 'pending') {
+                             x.innerHTML = "Request Pending";
+                             x.className = "btn btn-warning";
+                             x.disabled = true;
+                         }
+                         if (data[0][5] == 'declined') {
+                             x.innerHTML = "rejected";
+                             x.className = "btn btn-danger";
+                             x.disabled = true;
+                         }
+                         if (data[0][5] == 'fresh') {
+                             x.innerHTML = "Request SuperUser";
+                             x.className = "btn btn-info";
+                         }
+                         //  x.innerHTML = "Requested";
+                         //  x.className = "btn btn-warning";
+                         //  x.disabled = true;
+                     });
+
+
+
+             })();
+         </script>
 
      </body>
 
      </html>
+
  <?php } ?>

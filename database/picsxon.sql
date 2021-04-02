@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 26, 2021 at 03:40 PM
+-- Generation Time: Apr 02, 2021 at 06:12 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -40,10 +40,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`, `email`) VALUES
-(1, 'theadmin', '0192023a7bbd73250516f069df18b500', 'theadmin@gmail.com'),
-(2, 'admin2', '4297f44b13955235245b2497399d7a93', 'admin2@nfmf.com'),
-(3, 'mhoann', '4297f44b13955235245b2497399d7a93', 'mjehd@gmail.com'),
-(4, 'vishu', 'fcea920f7412b5da7be0cf42b8c93759', 'vishh@gmfm.com');
+(3, 'gowtham', 'a6d358f9786fe97e1ec604e5aaf299ec', 'gowtham@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -59,22 +56,22 @@ CREATE TABLE `pictures` (
   `vote_down` int(10) DEFAULT 0,
   `path` varchar(255) NOT NULL,
   `type` varchar(30) NOT NULL,
-  `timestamp` varchar(50) DEFAULT current_timestamp()
+  `timestamp` varchar(50) DEFAULT current_timestamp(),
+  `contributor` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pictures`
 --
 
-INSERT INTO `pictures` (`post_id`, `picture_name`, `category`, `vote_up`, `vote_down`, `path`, `type`, `timestamp`) VALUES
-(3, 'flower', 'nature', 0, 1, 'Milk on the deck_ by PascalCampion on DeviantArt.jpg', 'image/jpeg', '2021-02-17 07:19:23pm'),
-(4, 'dwell ', 'anime', 1, 0, 'wp1969317-how-to-train-your-dragon-wallpapers.jpg', 'image/jpeg', '2021-02-19 03:03:23pm'),
-(6, 'husky', 'dog', 1, 0, 'siberian-husky-woods-shutterstock_558432511.jpg', 'image/jpeg', '2021-02-19 03:04:56pm'),
-(8, 'Linkin Park', 'Music', 1, 0, 'linkin_park_lyrics-wallpaper-1366x768.jpg', 'image/jpeg', '2021-02-19 03:18:15pm'),
-(11, 'wrog', 'upset', 0, 1, 'Benji Davies (@Benji_Davies).jpg', 'image/jpeg', '2021-02-24 09:16:12am'),
-(12, 'home', 'peace', 0, 0, 'This makes me feel things_.jpg', 'image/jpeg', '2021-02-24 09:17:04am'),
-(14, 'lazy', 'dog', 0, 0, 'wp1969426-how-to-train-your-dragon-wallpapers.jpg', 'image/jpeg', '2021-02-25 01:19:34pm'),
-(15, 'oscar', 'dog', 0, 0, 'HB4AT3D3IMI6TMPTWIZ74WAR54.jpg', 'image/jpeg', '2021-02-25 05:59:39pm');
+INSERT INTO `pictures` (`post_id`, `picture_name`, `category`, `vote_up`, `vote_down`, `path`, `type`, `timestamp`, `contributor`) VALUES
+(1, 'lazysat', 'music', 1, 0, 'wallpaperflare.com_wallpaper (1).jpg', 'image/jpeg', '2021-04-02 04:47:04pm', 'gowtham'),
+(2, 'cappy', 'dog', 0, 0, 'HB4AT3D3IMI6TMPTWIZ74WAR54.jpg', 'image/jpeg', '2021-04-02 05:09:04pm', 'gowtham'),
+(3, 'wiser', 'anime', 1, 0, 'Milk on the deck_ by PascalCampion on DeviantArt.jpg', 'image/jpeg', '2021-04-02 05:09:44pm', 'gowtham'),
+(4, 'dwell', 'wicked', 1, 0, 'Seven Impossible Things Before Breakfast  » Blog Archive   » Greek Gods and Fearsome Blizzards_A Visit with John Rocco.jpg', 'image/jpeg', '2021-04-02 05:10:10pm', 'gowtham'),
+(5, 'pokemon', 'anime', 0, 0, 'soheb-zaidi-tgFR67JUcBs-unsplash.jpg', 'image/jpeg', '2021-04-02 05:17:53pm', 'preetham'),
+(6, 'flow', 'upset', 0, 1, 'This makes me feel things_.jpg', 'image/jpeg', '2021-04-02 06:00:36pm', 'preetham'),
+(7, 'peace', 'linkin', 0, 0, 'linkin_park_lyrics-wallpaper-1366x768 (1).jpg', 'image/jpeg', '2021-04-02 06:10:18pm', 'preetham');
 
 -- --------------------------------------------------------
 
@@ -95,11 +92,10 @@ CREATE TABLE `post_votes` (
 --
 
 INSERT INTO `post_votes` (`id`, `post_id`, `user_id`, `vote`, `date`) VALUES
-(1, 3, 99, 0, '2021-03-26 20:09:02'),
-(2, 4, 99, 1, '2021-03-26 20:09:07'),
-(3, 11, 99, 0, '2021-03-26 20:09:11'),
-(4, 8, 99, 1, '2021-03-26 20:09:35'),
-(5, 6, 99, 1, '2021-03-26 20:09:49');
+(1, 1, 2, 1, '2021-04-02 21:31:21'),
+(2, 6, 2, 0, '2021-04-02 21:31:25'),
+(3, 4, 2, 1, '2021-04-02 21:31:27'),
+(4, 3, 2, 1, '2021-04-02 21:31:30');
 
 -- --------------------------------------------------------
 
@@ -111,15 +107,18 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL
+  `email` varchar(100) NOT NULL,
+  `power` int(5) NOT NULL DEFAULT 0,
+  `status` varchar(20) NOT NULL DEFAULT 'fresh'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `email`) VALUES
-(19, 'gowtham', 'f56561c916e79a9c7be7b1b853090737', 'gowthambhat793@gmail.com');
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `power`, `status`) VALUES
+(1, 'gowth', '9d032048748881a7ebde85e090627262', 'gowthambhat793@gmail.com', 0, 'fresh'),
+(2, 'preetham', 'dc086e460a02a45abdd89e705479ea14', 'preetham@gmail.com', 1, 'accepted');
 
 --
 -- Indexes for dumped tables
@@ -157,25 +156,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `pictures`
 --
 ALTER TABLE `pictures`
-  MODIFY `post_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `post_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `post_votes`
 --
 ALTER TABLE `post_votes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
