@@ -49,6 +49,7 @@
                  <p id="main-title">PicsXon</p>
              </a>
              <nav>
+
                  <a href="../../data/user/userPhotoUpload.php"><button id="superUserPhotoUpload" class="btn btn-outline-primary">Upload Photo</button></a>
                  <button class="btn btn-outline-success" id="super-btn" name="super" onclick="superusercaller(<?php echo $userId; ?> )">Request Super User</button>
                  <a href="../../auth/user_auth/logout.php"><button id="logout-btn" class="btn btn-outline-danger">Logout</button></a>
