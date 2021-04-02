@@ -92,19 +92,19 @@ body {
  #logout-btn{
   position: absolute;
   top: 35px;
-  left: 77%;
+  left: 82%;
   padding: 0.7rem 0.7rem;
  }
  #super-btn{
   position: absolute;
   top: 35px;
-  left: 83%;
+  left: 73% ;
   padding: 0.7rem 0.7rem;
  }
  #superUserPhotoUpload{
   position: absolute;
   top: 35px;
-  left: 68%;
+  left: 63%;
   padding: 0.7rem 0.7rem;
   display:none;
  }

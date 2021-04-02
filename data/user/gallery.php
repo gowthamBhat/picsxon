@@ -32,6 +32,10 @@
              a {
                  text-decoration: none !important;
              }
+
+             i {
+                 text-decoration: none !important;
+             }
          </style>
 
 
@@ -46,9 +50,9 @@
                  <p id="main-title">PicsXon</p>
              </a>
              <nav>
-                 <a href="../../data/admin/photoupload.php"><button id="superUserPhotoUpload" class="btn btn-secondary">Upload Photo</button></a>
-                 <a href="../../auth/user_auth/logout.php"><button id="logout-btn" class="btn btn-info">Logout</button></a>
-                 <button class="btn btn-success" id="super-btn" name="super" onclick="superusercaller(<?php echo $userId; ?> )">Request Super User</button>
+                 <a href="../../data/admin/photoupload.php"><button id="superUserPhotoUpload" class="btn btn-outline-primary">Upload Photo</button></a>
+                 <button class="btn btn-outline-success" id="super-btn" name="super" onclick="superusercaller(<?php echo $userId; ?> )">Request Super User</button>
+                 <a href="../../auth/user_auth/logout.php"><button id="logout-btn" class="btn btn-outline-danger">Logout</button></a>
              </nav>
 
 
@@ -240,7 +244,9 @@
                             // echo "<i class='far fa-heart fa-2x'></i>";
                             //echo "&nbsp &nbsp &nbsp &nbsp";
 
-                            echo "&nbsp";
+                            echo "&nbsp&nbsp&nbsp";
+                            echo "<a href='../admin/images/" . $row['path'] . "' download><i class='fas fa-download'></i></a>";
+                            echo "&nbsp&nbsp&nbsp";
                             $time = timeAgo($row['timestamp']);
                             echo "<strong><label>$time</label> </strong>"; //calling timeago function 
 
