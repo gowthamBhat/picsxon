@@ -2,7 +2,6 @@
 
     session_start();
 
-
     if (!isset($_SESSION['username'])) {
         header('location:../../auth/user_auth/login.php');
     } else {
@@ -50,7 +49,7 @@
                  <p id="main-title">PicsXon</p>
              </a>
              <nav>
-                 <a href="../../data/admin/photoupload.php"><button id="superUserPhotoUpload" class="btn btn-outline-primary">Upload Photo</button></a>
+                 <a href="../../data/user/userPhotoUpload.php"><button id="superUserPhotoUpload" class="btn btn-outline-primary">Upload Photo</button></a>
                  <button class="btn btn-outline-success" id="super-btn" name="super" onclick="superusercaller(<?php echo $userId; ?> )">Request Super User</button>
                  <a href="../../auth/user_auth/logout.php"><button id="logout-btn" class="btn btn-outline-danger">Logout</button></a>
              </nav>
@@ -235,6 +234,8 @@
                             echo " <div class='card-body'> ";
                             echo " <h5 class='card-title'>" . $row['picture_name'] . "</h5> ";
                             echo " <label class='card-text'>Category:&nbsp" . $row['category'] . "</label>";
+                            echo "<br/>";
+                            echo " Contributor: @" . $row['contributor'];
                             echo "<br/>";
                             echo "<a class='options' data-vote-type='1' id='post_vote_up_" . $row['post_id'] . "'><i class='far fa-heart fa-1x' data-original-title='Like this post'></i></a>";
                             echo "<span class='counter' id='vote_up_count_" . $row['post_id'] . "'>&nbsp;&nbsp;" . $row['vote_up'] . "</span>&nbsp;&nbsp;&nbsp";
