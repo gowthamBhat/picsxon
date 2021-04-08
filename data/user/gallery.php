@@ -231,7 +231,7 @@
 
 
                             echo "<div class='card' style='width: 18rem;'> ";
-                            echo "<img class='card-img-top' src='../admin/images/" . $row['path'] . "' alt='Card image cap'> "; //bootstrap card-view is used
+                            echo "<a href='../admin/images/" . $row['path'] . "'> <img class='card-img-top' src='../admin/images/" . $row['path'] . "' alt='Card image cap'> </a> "; //bootstrap card-view is used
                             echo " <div class='card-body'> ";
                             echo " <h5 class='card-title'>" . $row['picture_name'] . "</h5> ";
                             echo " <label class='card-text'>Category:&nbsp" . $row['category'] . "</label>";
