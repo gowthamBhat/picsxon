@@ -24,8 +24,8 @@
          <link rel="stylesheet" href="../../styles/css/all.css">
          <script src="../../js/jquery.js"></script>
 
-         <script src="vote.js"></script>
-         <script async defer src="../../js/gallery.js"></script>
+         <script defer src="vote.js"></script>
+         <script defer src="../../js/gallery.js"></script>
 
          <style>
              a {
