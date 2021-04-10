@@ -24,6 +24,7 @@
 		</div>
 		<div class="input-group">
 			<button type="submit" class="btn" name="login_user">Login</button>
+			<a href="../../index.html"><button type="button" class="btn" name="login_user">Go back</button></a>
 		</div>
 
 	</form>

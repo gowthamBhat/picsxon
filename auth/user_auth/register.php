@@ -32,6 +32,7 @@
 		</div>
 		<div class="input-group">
 			<button type="submit" class="btn" name="reg_user">Register</button>
+			<a href="../../index.html"><button type="button" class="btn" name="login_user">Go back</button></a>
 		</div>
 		<p>
 			Already a member? <a href="login.php">Sign in</a>

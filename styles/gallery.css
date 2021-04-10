@@ -1,3 +1,7 @@
+@font-face {
+  font-family: myFirstFont;
+  src: url('fonts/Monoton-Regular.ttf');
+}
 body {
     background-color: black;
   }
@@ -51,7 +55,7 @@ body {
   #main-title {
     color:#0ee3df;
   
-    font-family: "Gloria Hallelujah", cursive;
+    font-family: myFirstFont;
     font-size: 40px;
     font-weight: 300;
     position: relative;

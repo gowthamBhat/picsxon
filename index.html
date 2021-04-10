@@ -6,13 +6,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap" rel="stylesheet"> -->
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <link rel="stylesheet" href="styles/home.css">
 
 
-    <script defer src="js/home.js"></script>
 
+    <script defer src="js/home.js"></script>
+    <style>
+        @font-face {
+            font-family: myFirstFont;
+            src: url('styles/fonts/Monoton-Regular.ttf');
+        }
+
+        #title-picsxon {
+            color: #1782a5;
+            position: absolute;
+            left: 45%;
+            font-size: 40px;
+
+            font-family: myFirstFont;
+        }
+    </style>
     <title>Home</title>
 </head>
 
@@ -20,9 +34,7 @@
     <div class="container">
         <!-- <h3 class="proj-ttile" style="color: white;">PicsXon</h3> -->
 
-        <h2
-            style="color: white;margin-top: 15px;font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
-            PICSXON</h2>
+        <h2 id="title-picsxon">PICSXON</h2>
         <div class="carousel" data-gap="60">
             <figure>
                 <img src="images/img1.jpg" alt="">
