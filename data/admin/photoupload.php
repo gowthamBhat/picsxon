@@ -73,10 +73,9 @@ if (!isset($_SESSION['admin'])) {
         <title>Add Picture</title>
 
         <!-- <link rel="shortcut icon" type="image/x-icon" href="../img/fav2.png" /> -->
-        <link rel="stylesheet" href="../../styles/photoupload.css">
-
 
         <link rel="stylesheet" type="text/css" href="../../styles/bootstrap.min.css">
+        <link rel="stylesheet" href="../../styles/photoupload.css">
     </head>
 
     <body>
@@ -84,13 +83,6 @@ if (!isset($_SESSION['admin'])) {
         echo " $error  ";
         echo " $note ";    ?>
 
-        <div class="nav">
-            <div class="slide-nav">
-                <!-- <span class="nav-user"><?php echo $uname; ?></span> -->
-
-                <!-- <a class="nav-logout" href="log-out.php"><span class="btn btn-danger btn-sm">logout</span></a> -->
-            </div>
-        </div>
         <div class="title-main">
 
             <a href="http://localhost/picsxon/index.html" id="hov">

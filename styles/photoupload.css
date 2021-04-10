@@ -1,7 +1,10 @@
+@font-face {
+  font-family: myFirstFont;
+  src: url('fonts/Monoton-Regular.ttf');
+}
 body
 {
-background-color: #c8c9af;
-
+background-color: black;
 
 }
 
@@ -9,21 +12,15 @@ input,textarea
 {
     border: 2px solid black;
 
-
 }
 
 
 .title-main
 {
+  
 width: fit-content;
 height: fit-content;
 }
-
-
-
-
-
-
 
 input {
           width: 250px;
@@ -86,13 +83,7 @@ top:30px;
   background-color: black;
   font-weight: bold;
 }
-.nav
-{
 
-background-color: #c8c9af;
-margin-top: 10px;
-
-}
 
 .nav-user
 {
@@ -123,11 +114,11 @@ margin-top: 30px;
 
 #proj_title
 {
-color: black;
-
-font-family: 'Gloria Hallelujah', cursive;
+  font-family:myFirstFont;
+  color: #1782a5;
 font-size: 50px;
 font-weight: 300;
+margin-top: 20px;
 position: relative;
 top: -15px;
 left: 60px;
@@ -143,9 +134,9 @@ text-decoration:none;
 }
 #hov:hover
 {
-
-    color: black;
+ color: black;
   text-decoration:underline;
-
-
+}
+table th{
+  color:#1782a5 ;
 }
