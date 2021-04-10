@@ -86,7 +86,7 @@
                             echo '<a  href="gallery.php"><button type="button" class="list-group-item list-group-item-action ">All</button></a> ';
                             while ($row = mysqli_fetch_array($sqlResult)) {
 
-                                echo '<a href="gallery.php?category=' . $row['category'] . ' " > <button type="button" class="list-group-item list-group-item-action ">' . $row['category'] . ' </button></a> ';
+                                echo '<a href="gallery.php?category=' . $row['category'] . ' " > <button type="button" class="list-group-item list-group-item-action img-cat">' . $row['category'] . ' </button></a> ';
                             }
 
 

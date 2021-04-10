@@ -112,4 +112,10 @@ body {
   padding: 0.7rem 0.7rem;
   display:none;
  }
- 
+ .img-cat{
+   margin: 2px 2px;
+ }
+ .img-cat:hover{
+  box-shadow: 0px 0px 30px 0px #0ee3df;
+  margin-left: 10px;
+ }
