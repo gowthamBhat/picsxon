@@ -1,6 +1,17 @@
 body{
-    background: rgb(10,7,52);
-    background: linear-gradient(90deg, rgba(10,7,52,1) 0%, rgba(127,38,38,1) 65%, rgba(11,43,49,1) 100%);
+    background: black;
+    /* background: rgb(10,7,52);
+    background: linear-gradient(90deg, rgba(10,7,52,1) 0%, rgba(127,38,38,1) 65%, rgba(11,43,49,1) 100%); */
+}
+@font-face {
+    font-family: myFirstFont;
+    src: url('fonts/Monoton-Regular.ttf');
+  }
+.title{
+    color: #1782a5;
+    font-family: myFirstFont;
+    margin-top: 5px;
+    margin:30px 50px;
 }
 
 #admin{
@@ -17,8 +28,8 @@ body{
 }
 #image-container{
     position: relative;
-    background: rgb(10,7,52);
-    background: linear-gradient(90deg, rgba(10,7,52,1) 0%, rgba(127,38,38,1) 65%, rgba(11,43,49,1) 100%);
+    /* background: rgb(10,7,52); */
+    background: #1782a5;
 
 }
 #image-container #cam-icon{
@@ -47,12 +58,11 @@ body{
     margin-left: 380px;
 }
 .picturelist-container{
-    background: rgb(10,7,52);
-    background: linear-gradient(90deg, rgba(10,7,52,1) 0%, rgba(127,38,38,1) 57%, rgba(11,43,49,1) 100%);
+    background: #1782a5;
 }
 .list-container{
-    background: rgb(10,7,52);
-background: linear-gradient(90deg, rgba(10,7,52,1) 0%, rgba(127,38,38,1) 57%, rgba(11,43,49,1) 100%);
+   
+background: #1782a5;
 display: none;
 }
 .user-count{
@@ -97,8 +107,7 @@ left: 67%;
     padding: 10px;
 }
 .table-data{
-    background: rgb(10,7,52);
-    background: linear-gradient(90deg, rgba(10,7,52,1) 0%, rgba(127,38,38,1) 57%, rgba(11,43,49,1) 100%);
+    background: #1782a5;
 color: white;
 width: 100%;
 padding: 5px 5px;

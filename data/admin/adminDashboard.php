@@ -3,6 +3,7 @@ session_start();
 if (!isset($_SESSION['admin'])) {
     header('location:../../auth/admin_auth/login.php');
 } else {
+    $admin_name = $_SESSION['admin'];
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -27,59 +28,63 @@ if (!isset($_SESSION['admin'])) {
         <title>Document</title>
     </head>
 
-    <body>
-        <a href="../../index.html">
-            <h1 style="margin:30px 50px">Picsxon</h1>
-        </a>
-        <nav>
-            <div class="nav-container-upload">
+    <body style="background-color:black;">
+        <div class="container">
+            <a href="../../index.html">
+                <h1 class="title">Picsxon</h1>
+            </a>
+            <nav>
+                <div class="nav-container-upload">
 
 
-                <a href="photoupload.php"><button class="nav btn btn-dark">Upload Photo</button></a>
+                    <a href="photoupload.php"><button class="nav btn btn-dark">Upload Photo</button></a>
 
+                </div>
+                <div class="nav-container-2-user">
+                    <button id="user-list-view" class=" btn btn-dark">view users</button>
+                    <button id="getPictures" class="btn btn-dark">Get Pictures</button>
+                    <button id="getSuperUserList" class="btn btn-warning">Requests</button>
+                    <a href="../../auth/user_auth/logout.php"> <button class="btn btn-danger">Logout</button></a>
+                </div>
+                <div class="nav-container-admin" style="width: fit-content;">
+                    <a href="../../auth/admin_auth/register.php"><button id="addAdmin" class=" btn btn-dark">Add Admin</button></a>
+                </div>
+
+            </nav>
+            <!-- need to put all buttons in a div and make position absolute then have to make float left -->
+            <center>
+                <div id="image-container">
+                    <figure>
+                        <img id="admin" src="../../images/admin.png" alt="admin img" width="330" height="330">
+                        <i class="fas fa-camera-retro fa-2x" id="cam-icon" title="upload new image"></i>
+
+                        <figcaption><?php echo $admin_name; ?></figcaption>
+                    </figure>
+                </div>
+            </center>
+
+
+            <div class="list-container" id="list-container">
+                <div class="user-list">
+                    <table class='table-data' id="user-table">
+                    </table>
+                </div>
             </div>
-            <div class="nav-container-2-user">
-                <button id="user-list-view" class=" btn btn-dark">view users</button>
-                <button id="getPictures" class="btn btn-dark">Get Pictures</button>
-                <button id="getSuperUserList" class="btn btn-warning">Requests</button>
-                <a href="../../auth/user_auth/logout.php"> <button class="btn btn-danger">Logout</button></a>
+            <div class="picturelist-container">
+                <div class="picture-list">
+                    <table class="table-data" id="pictureTable">
+                    </table>
+                </div>
             </div>
-            <div class="nav-container-admin" style="width: fit-content;">
-                <a href="../../auth/admin_auth/register.php"><button id="addAdmin" class=" btn btn-dark">Add Admin</button></a>
-            </div>
-
-        </nav>
-        <center>
-            <div id="image-container">
-                <figure>
-                    <img id="admin" src="../../images/admin.png" alt="admin img" width="330" height="330">
-                    <i class="fas fa-camera-retro fa-2x" id="cam-icon" title="upload new image"></i>
-
-                    <figcaption>Admin</figcaption>
-                </figure>
-            </div>
-        </center>
-
-
-        <div class="list-container" id="list-container">
-            <div class="user-list">
-                <table class='table-data' id="user-table">
-                </table>
+            <br>
+            <div class="superUser-container">
+                <div class="superUser-list">
+                    <table class="table-data" id="superUserList">
+                    </table>
+                </div>
             </div>
         </div>
-        <div class="picturelist-container">
-            <div class="picture-list">
-                <table class="table-data" id="pictureTable">
-                </table>
-            </div>
-        </div>
-        <br>
-        <div class="superUser-container">
-            <div class="superUser-list">
-                <table class="table-data" id="superUserList">
-                </table>
-            </div>
-        </div>
+
         <script>
             var superList = document.getElementById('getSuperUserList');
             superList.addEventListener('click', getSuperUserList);
