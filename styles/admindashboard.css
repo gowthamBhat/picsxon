@@ -7,11 +7,17 @@ body{
     font-family: myFirstFont;
     src: url('fonts/Monoton-Regular.ttf');
   }
+  .div a{
+      width: fit-content;
+      height: fit-content;
+  }
 .title{
     color: #1782a5;
     font-family: myFirstFont;
     margin-top: 5px;
     margin:30px 50px;
+    width: fit-content;
+    height: fit-content;
 }
 
 #admin{
