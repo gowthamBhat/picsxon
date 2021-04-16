@@ -1,16 +1,11 @@
-var user = document.getElementById('user-list-view');
-var list = document.getElementById('list-container');
-user.addEventListener('click', function (event) {
-    event.preventDefault();
-
-    list.classList.toggle("list-hide");
-})
-
 
 //* Fetch call scripts
-var user_table = document.getElementById("user-table");
+var power_table = document.getElementById("power-table");
 
 window.onload = fetchCall();
+
+var user = document.getElementById('user-list-view');
+user.addEventListener('click', fetchCall)
 
 function fetchCall() {
     fetch(`userList.php`)
@@ -44,7 +39,7 @@ function fetchDataHandler(data) {
             userListOutPut += "<tr><td>" + data[i][1] + "</td> <td> &nbsp&nbsp&nbsp " + data[i][3] + "</td> <td> <button class='btn btn-danger btn-sm' onclick=deleteUser(" + data[i][0] + ")>X</button></td> </tr>"
         }
     }
-    user_table.innerHTML = userListOutPut;
+    power_table.innerHTML = userListOutPut;
 }
 
 function deleteUser(id) {
@@ -57,7 +52,7 @@ function deleteUser(id) {
 }
 
 var getPic = document.getElementById('getPictures').addEventListener('click', getPictures);
-var pictureTable = document.getElementById("pictureTable");
+
 
 function getPictures() {
     fetch('picturelist.php')
@@ -84,7 +79,7 @@ function HandlePictureResponse(data) {
         tableData += "<tr><td>" + data[i][0] + "</td> <td> &nbsp&nbsp&nbsp " + data[i][1] + "</td> <td> &nbsp&nbsp&nbsp " + data[i][2] + "</td> <td>  " + data[i][3] + "</td> <td>  " + data[i][4] + "</td><td> <button class='btn btn-danger btn-sm' onclick=deletePicture(" + data[i][0] + ")>X</button></td>  </tr>"
     }
 
-    pictureTable.innerHTML = tableData;
+    power_table.innerHTML = tableData;
 }
 
 function deletePicture(id) {
@@ -92,5 +87,53 @@ function deletePicture(id) {
         .then(response => response.json())
         .then(data => {
             getPictures();
+        });
+}
+
+var superList = document.getElementById('getSuperUserList');
+superList.addEventListener('click', getSuperUserList);
+
+function getSuperUserList() {
+    fetch('superUserList.php')
+        .then(response => response.json())
+        .then(data => {
+            HandleSuperUserList(data);
+        });
+}
+
+function HandleSuperUserList(data) {
+    let tableData = ` 
+                    <thead class="thead-dark">
+                    <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Accept</th>
+                    <th scope="col">Decline</th>
+                    </tr>
+                    </thead>`;
+
+
+    for (let i = 0; i < data.length; i++) {
+        tableData += "<tr><td>" + data[i][0] + "</td> <td> &nbsp&nbsp&nbsp " + data[i][1] + "</td> <td> &nbsp&nbsp&nbsp " + data[i][3] + "</td> <td> <button class='btn btn-danger btn-sm' onclick=acceptUser(" + data[i][0] + ")>Accept</button></td> <td> <button class='btn btn-danger btn-sm' onclick=declineUser(" + data[i][0] + ")>Decline</button></td>  </tr>"
+    }
+
+    power_table.innerHTML = tableData;
+
+}
+
+function acceptUser(id) {
+    fetch(`superUserAccept.php?id=${id}`)
+        .then(response => response.json())
+        .then(data => {
+            getSuperUserList();
+        });
+}
+
+function declineUser(id) {
+    fetch(`superUserDecline.php?id=${id}`)
+        .then(response => response.json())
+        .then(data => {
+            getSuperUserList();
         });
 }

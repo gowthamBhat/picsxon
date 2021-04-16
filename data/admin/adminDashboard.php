@@ -25,7 +25,7 @@ if (!isset($_SESSION['admin'])) {
                 display: block;
             }
         </style>
-        <title>Document</title>
+        <title>Admin panel</title>
     </head>
 
     <body style="background-color:black;">
@@ -34,21 +34,18 @@ if (!isset($_SESSION['admin'])) {
                 <h1 class="title">Picsxon</h1>
             </a>
             <nav>
-                <div class="nav-container-upload">
+                <div class="nav-list">
 
 
-                    <a href="photoupload.php"><button class="nav btn btn-dark">Upload Photo</button></a>
+                    <a href="photoupload.php"><button class="child-nav btn btn-dark">Upload Photo</button></a>
+                    <button id="user-list-view" class="child-nav btn btn-dark">view users</button>
+                    <button id="getPictures" class="child-nav btn btn-dark">Get Pictures</button>
+                    <button id="getSuperUserList" class="child-nav btn btn-warning">Requests</button>
+                    <a href="../../auth/admin_auth/register.php"><button id="addAdmin" class="child-nav btn btn-dark">Add Admin</button></a>
+                    <a href="../../auth/user_auth/logout.php"> <button class="child-nav btn btn-danger">Logout</button></a>
 
                 </div>
-                <div class="nav-container-2-user">
-                    <button id="user-list-view" class=" btn btn-dark">view users</button>
-                    <button id="getPictures" class="btn btn-dark">Get Pictures</button>
-                    <button id="getSuperUserList" class="btn btn-warning">Requests</button>
-                    <a href="../../auth/user_auth/logout.php"> <button class="btn btn-danger">Logout</button></a>
-                </div>
-                <div class="nav-container-admin" style="width: fit-content;">
-                    <a href="../../auth/admin_auth/register.php"><button id="addAdmin" class=" btn btn-dark">Add Admin</button></a>
-                </div>
+
 
             </nav>
             <!-- need to put all buttons in a div and make position absolute then have to make float left -->
@@ -62,81 +59,11 @@ if (!isset($_SESSION['admin'])) {
                     </figure>
                 </div>
             </center>
-
-
-            <div class="list-container" id="list-container">
-                <div class="user-list">
-                    <table class='table-data' id="user-table">
-                    </table>
-                </div>
+            <div class="table-container">
+                <table class='table-data' id="power-table">
+                </table>
             </div>
-            <div class="picturelist-container">
-                <div class="picture-list">
-                    <table class="table-data" id="pictureTable">
-                    </table>
-                </div>
-            </div>
-            <br>
-            <div class="superUser-container">
-                <div class="superUser-list">
-                    <table class="table-data" id="superUserList">
-                    </table>
-                </div>
-            </div>
-        </div>
 
-        <script>
-            var superList = document.getElementById('getSuperUserList');
-            superList.addEventListener('click', getSuperUserList);
-
-            function getSuperUserList() {
-                fetch('superUserList.php')
-                    .then(response => response.json())
-                    .then(data => {
-                        HandleSuperUserList(data);
-                    });
-            }
-
-            function HandleSuperUserList(data) {
-                let tableData = ` 
-<thead class="thead-dark">
-<tr>
-<th scope="col">id</th>
-<th scope="col">name</th>
-<th scope="col">Email</th>
-<th scope="col">Accept</th>
-<th scope="col">Decline</th>
-</tr>
-</thead>`;
-                superTable = document.getElementById('superUserList');
-
-                console.log(data);
-
-
-                for (let i = 0; i < data.length; i++) {
-                    tableData += "<tr><td>" + data[i][0] + "</td> <td> &nbsp&nbsp&nbsp " + data[i][1] + "</td> <td> &nbsp&nbsp&nbsp " + data[i][3] + "</td> <td> <button class='btn btn-danger btn-sm' onclick=acceptUser(" + data[i][0] + ")>Accept</button></td> <td> <button class='btn btn-danger btn-sm' onclick=declineUser(" + data[i][0] + ")>Decline</button></td>  </tr>"
-                }
-
-                superTable.innerHTML = tableData;
-
-            }
-
-            function acceptUser(id) {
-                fetch(`superUserAccept.php?id=${id}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        getSuperUserList();
-                    });
-            }
-
-            function declineUser(id) {
-                fetch(`superUserDecline.php?id=${id}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        getSuperUserList();
-                    });
-            }
-        </script>
     </body>
 
     </html>
