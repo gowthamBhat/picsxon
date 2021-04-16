@@ -37,10 +37,11 @@ if (!isset($_SESSION['admin'])) {
                 <div class="nav-list">
 
 
-                    <a href="photoupload.php"><button class="child-nav btn btn-dark">Upload Photo</button></a>
-                    <button id="user-list-view" class="child-nav btn btn-dark">view users</button>
+
+                    <button id="user-list-view" class="child-nav btn btn-dark">View Users</button>
                     <button id="getPictures" class="child-nav btn btn-dark">Get Pictures</button>
                     <button id="getSuperUserList" class="child-nav btn btn-warning">Requests</button>
+                    <a href="photoupload.php"><button class="child-nav btn btn-dark">Upload Photo</button></a>
                     <a href="../../auth/admin_auth/register.php"><button id="addAdmin" class="child-nav btn btn-dark">Add Admin</button></a>
                     <a href="../../auth/user_auth/logout.php"> <button class="child-nav btn btn-danger">Logout</button></a>
 
