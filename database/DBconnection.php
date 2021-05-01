@@ -4,7 +4,7 @@ $user1 = "root";
 $password1 = "";
 $db = 'picsxon';
 
-//$con=mysqli_conncet("$localhost","$user","$password","$db");
+// $con=mysqli_conncet("$localhost","$user","$password","$db"); 
 $con = new mysqli($server, $user1, $password1, $db);
 
 if ($con->connect_error) {

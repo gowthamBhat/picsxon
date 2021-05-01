@@ -1,6 +1,6 @@
 
 //* Fetch call scripts
-var power_table = document.getElementById("power-table");
+var power_table = document.getElementById("power-table"); //table to which all data fetched
 
 window.onload = fetchCall();
 

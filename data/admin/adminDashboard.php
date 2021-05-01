@@ -49,7 +49,6 @@ if (!isset($_SESSION['admin'])) {
 
 
             </nav>
-            <!-- need to put all buttons in a div and make position absolute then have to make float left -->
             <center>
                 <div id="image-container">
                     <figure>
