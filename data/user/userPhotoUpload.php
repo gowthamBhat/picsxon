@@ -79,7 +79,7 @@ if ($_SESSION['username']  && $_SESSION['power'] != 1) {
         <link rel="stylesheet" type="text/css" href="../../styles/bootstrap.min.css">
     </head>
 
-    <body>
+    <body style="background-color: #000;">
         <?php
         echo " $error  ";
         echo " $note ";    ?>

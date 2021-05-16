@@ -3,11 +3,11 @@ session_start();
 include('Posts.php');
 $posts = new Posts();
 // get logged in userid to vote
-$user_id = $_SESSION['id'];; //!from session we have to pass the user id
+$user_id = $_SESSION['id']; //!from session we have to pass the user id
 if ($_POST['post_id'] && $user_id) {
 	$postVote = $posts->getPostVotes($_POST['post_id']);
 	$userVote = $posts->getUserVotes($user_id, $_POST['post_id']);
-	if ($_POST['vote_type'] == 1) {
+	if ($_POST['vote_type'] == 1) { //like
 		if ($posts->isUserAlreadyVoted($user_id, $_POST['post_id']) && !$userVote['vote']) {
 			$postVote['vote_up'] += 1; //if already voted up count increases
 			$postVote['vote_down'] -= 1; //down count decreases
@@ -16,7 +16,7 @@ if ($_POST['post_id'] && $user_id) {
 			$postVote['vote_up'] += 1; //if it is users first vote then only upvote will be increased
 			$userVote['vote'] = 1; //makes the user voted for that post
 		}
-	} else if ($_POST['vote_type'] == 0) {
+	} else if ($_POST['vote_type'] == 0) { //dislike
 		if ($posts->isUserAlreadyVoted($user_id, $_POST['post_id']) && $userVote['vote']) {
 			$postVote['vote_up'] -= 1;
 			$postVote['vote_down'] += 1;
