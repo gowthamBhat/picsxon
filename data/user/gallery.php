@@ -16,7 +16,7 @@
 
      <head>
          <title> Gallery</title>
-
+         <link rel="stylesheet" href="../../styles/normalize.css">
          <link rel="stylesheet" type="text/css" href="../../styles/bootstrap.min.css">
 
          <link rel="stylesheet" type="text/css" href="../../styles/gallery.css">

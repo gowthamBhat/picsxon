@@ -1,63 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="styles/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/home.css">
-
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/normalize.css" />
+    <link rel="stylesheet" href="styles/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles/home.css" />
 
     <script defer src="js/home.js"></script>
     <style>
-        @font-face {
-            font-family: myFirstFont;
-            src: url('styles/fonts/Monoton-Regular.ttf');
-        }
+      @font-face {
+        font-family: myFirstFont;
+        src: url("styles/fonts/Monoton-Regular.ttf");
+      }
 
-        #title-picsxon {
-            color: #1782a5;
-            position: absolute;
-            left: 45%;
-            font-size: 40px;
+      #title-picsxon {
+        color: #1782a5;
+        position: absolute;
+        left: 45%;
+        font-size: 40px;
 
-            font-family: myFirstFont;
-        }
+        font-family: myFirstFont;
+      }
     </style>
     <title>Home</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <!-- <h3 class="proj-ttile" style="color: white;">PicsXon</h3> -->
+      <!-- <h3 class="proj-ttile" style="color: white;">PicsXon</h3> -->
 
-        <h2 id="title-picsxon">PICSXON</h2>
-        <div class="carousel" data-gap="60">
-            <figure>
-                <img src="images/img1.jpg" alt="">
-                <img src="images/img2.jpg" alt="">
-                <img src="images/img3.jpg" alt="">
-                <img src="images/img4.jpg" alt="">
-                <img src="images/img5.jpg" alt="">
-                <img src="images/img1.jpg" alt="">
-                <img src="images/img3.jpg" alt="">
-            </figure>
-            <nav>
-                <button id="login" class="nav login">Login</button>
-                <button id="gallery" class="nav gallery">Gallery</button>
+      <h2 id="title-picsxon">PICSXON</h2>
+      <div class="carousel" data-gap="60">
+        <figure>
+          <img src="images/img1.jpg" alt="" />
+          <img src="images/img2.jpg" alt="" />
+          <img src="images/img3.jpg" alt="" />
+          <img src="images/img4.jpg" alt="" />
+          <img src="images/img5.jpg" alt="" />
+          <img src="images/img1.jpg" alt="" />
+          <img src="images/img3.jpg" alt="" />
+        </figure>
+        <nav>
+          <button id="login" class="nav login">Login</button>
+          <button id="gallery" class="nav gallery">Gallery</button>
 
-                <!-- temp button, will be moved to certain endpoint later  -->
-                <button id="admin" class="nav admin">Admin</button>
-
-            </nav>
-        </div>
-
-
+          <!-- temp button, will be moved to certain endpoint later  -->
+          <button id="admin" class="nav admin">Admin</button>
+        </nav>
+      </div>
     </div>
-
-</body>
-
+  </body>
 </html>
